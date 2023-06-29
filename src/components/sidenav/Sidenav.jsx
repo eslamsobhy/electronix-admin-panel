@@ -32,7 +32,11 @@ const navLinks = [
 const SideNav = () => {
   return (
     <>
-      <section className="side-nav shadow-lg shadow-indigo-500/40 h-[100vh] w-1/5 flex flex-col">
+      <section className="side-nav shadow-lg shadow-indigo-500/40 h-[100vh] w-[300px] flex flex-col">
+        <div className="flex justify-center items-center py-[1rem]">
+          <img className="w-[3rem] h-[3rem]" src="vite.svg" alt="" />
+        </div>
+        <div className="splitter h-[1px] w-[100%] bg-[#eee]"></div>
         <div className="user-info flex flex-col justify-center items-center py-[35px]">
           <img
             className="w-1/4 rounded-[50%]"
