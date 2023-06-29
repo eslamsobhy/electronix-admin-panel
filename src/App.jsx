@@ -4,6 +4,7 @@ import "./App.css";
 
 import SideNav from "./components/sidenav/SideNav";
 import Navbar from "./components/nav/Navbar";
+import MainContainer from "./components/main/MainContainer";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -26,7 +27,7 @@ function App() {
         <SideNav isNavOpen={isNavOpen} />
         <div className="main w-[100%]">
           <Navbar isNavOpen={isNavOpen} navHandler={navHandler} />
-          <p className="p-[20px]">main</p>
+          <MainContainer />
         </div>
       </div>
     </>

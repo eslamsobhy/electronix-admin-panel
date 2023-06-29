@@ -6,24 +6,24 @@ export const navLinks = [
     id: 1,
     url: "",
     text: "Dashboard",
-    icon: <HiHome />,
+    icon: HiHome,
   },
   {
     id: 2,
     url: "",
     text: "Categories",
-    icon: <HiViewBoards />,
+    icon: HiViewBoards,
   },
   {
     id: 3,
     url: "",
     text: "Products",
-    icon: <HiViewGrid />,
+    icon: HiViewGrid,
   },
   {
     id: 4,
     url: "",
     text: "Users",
-    icon: <HiUserGroup />,
+    icon: HiUserGroup,
   },
 ];
