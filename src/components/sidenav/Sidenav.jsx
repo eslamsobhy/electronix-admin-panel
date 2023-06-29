@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { navLinks } from "./navData";
 
 const SideNav = ({ isNavOpen }) => {
@@ -34,7 +36,11 @@ const SideNav = ({ isNavOpen }) => {
         >
           {navLinks.map((link) => {
             return (
-              <div className="link flex mb-[40px] group" key={link.id}>
+              <Link
+                to={link.url}
+                className="link flex mb-[40px] group"
+                key={link.id}
+              >
                 <div
                   className={`icon flex justify-center items-center hover:cursor-pointer ${
                     isNavOpen ? "pl-[30px]" : ""
@@ -47,7 +53,7 @@ const SideNav = ({ isNavOpen }) => {
                     {link.text}
                   </div>
                 )}
-              </div>
+              </Link>
             );
           })}
         </article>

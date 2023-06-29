@@ -4,25 +4,25 @@ import { HiUserGroup, HiHome, HiViewBoards, HiViewGrid } from "react-icons/hi";
 export const navLinks = [
   {
     id: 1,
-    url: "",
+    url: "/",
     text: "Dashboard",
     icon: HiHome,
   },
   {
     id: 2,
-    url: "",
+    url: "/categories",
     text: "Categories",
     icon: HiViewBoards,
   },
   {
     id: 3,
-    url: "",
+    url: "/products",
     text: "Products",
     icon: HiViewGrid,
   },
   {
     id: 4,
-    url: "",
+    url: "/users",
     text: "Users",
     icon: HiUserGroup,
   },
