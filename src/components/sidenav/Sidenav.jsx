@@ -1,33 +1,6 @@
 import React from "react";
 
-import { HiUserGroup, HiHome, HiViewBoards, HiViewGrid } from "react-icons/hi";
-
-const navLinks = [
-  {
-    id: 1,
-    url: "",
-    text: "Dashboard",
-    icon: <HiHome size={25} color="#b17a15" />,
-  },
-  {
-    id: 2,
-    url: "",
-    text: "Categories",
-    icon: <HiViewBoards size={25} color="#b17a15" />,
-  },
-  {
-    id: 3,
-    url: "",
-    text: "Products",
-    icon: <HiViewGrid size={25} color="#b17a15" />,
-  },
-  {
-    id: 4,
-    url: "",
-    text: "Users",
-    icon: <HiUserGroup size={25} color="#b17a15" />,
-  },
-];
+import { navLinks } from "./navData";
 
 const SideNav = ({ isNavOpen }) => {
   return (
@@ -60,19 +33,18 @@ const SideNav = ({ isNavOpen }) => {
           }`}
         >
           {navLinks.map((link) => {
-            const { id, url, text, icon } = link;
             return (
-              <div className="link flex mb-[40px] group" key={id}>
+              <div className="link flex mb-[40px] group" key={link.id}>
                 <div
                   className={`icon flex justify-center items-center hover:cursor-pointer ${
                     isNavOpen ? "pl-[30px]" : ""
                   }`}
                 >
-                  {icon}
+                  {<link.icon size={25} color="#b17a15" />}
                 </div>
                 {isNavOpen && (
                   <div className="text font-semibold text-[#757070] pl-[10px] group-hover:text-[#b17a15] hover:cursor-pointer">
-                    {text}
+                    {link.text}
                   </div>
                 )}
               </div>
