@@ -2,11 +2,14 @@ import React from "react";
 
 import { HiMenu } from "react-icons/hi";
 
-const Navbar = () => {
+const Navbar = ({ isNavOpen, navHandler }) => {
   return (
     <>
       <nav className="navbar flex justify-between items-center h-[5rem] w-[100%] shadow-sm shadow-indigo-500/40 py-[1rem] px-[2rem]">
-        <div className="toggle-logo flex justify-between hover:cursor-pointer">
+        <div
+          onClick={() => navHandler()}
+          className="toggle-logo flex justify-between hover:cursor-pointer"
+        >
           <HiMenu size={40} color="#b17a15" />
         </div>
         <img
