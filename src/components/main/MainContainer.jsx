@@ -1,27 +1,20 @@
 import React from "react";
 
 import { navLinks } from "../sidenav/navData";
+import Card from "./Card";
 
 const MainContainer = () => {
   return (
     <>
-      {navLinks.map((link) => {
-        if (link.text == "Dashboard") return;
-        return (
-          <div key={link.id} className="card-container">
-            <div className="card-info">
-              <div className="info">
-                <div className="name">All {link.text}</div>
-                <div className="count">3</div>
-              </div>
-              <div className="icon">{<link.icon size={50} />}</div>
-            </div>
-            <div className="progress-bar">
-              <div className="progress"></div>
-            </div>
-          </div>
-        );
-      })}
+      <h1 className="mt-[1rem] ml-[2rem] font-bold text-[25px] text-[#b17a15]">
+        Electro Dashboard
+      </h1>
+      <div className="main p-[2rem] flex flex-wrap justify-evenly">
+        {navLinks.map((link) => {
+          if (link.text == "Dashboard") return;
+          return <Card key={link.id} link={link} />;
+        })}
+      </div>
     </>
   );
 };
