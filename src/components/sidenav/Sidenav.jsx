@@ -43,7 +43,7 @@ const SideNav = ({ isNavOpen }) => {
         <div className="splitter h-[1px] w-[100%] bg-[#eee]"></div>
         <div className="user-info flex flex-col justify-center items-center py-[35px]">
           <img
-            className="w-[4rem] rounded-[50%]"
+            className={`rounded-[50%] ${isNavOpen ? "w-[4rem]" : "w-[3rem]"}`}
             src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
             alt="name"
           />
@@ -54,7 +54,7 @@ const SideNav = ({ isNavOpen }) => {
           )}
         </div>
         <div className="splitter h-[1px] w-[100%] bg-[#eee]"></div>
-        <article className="nav pl-[25px] pt-[35px]">
+        <article className="nav flex flex-col justify-center items-center pt-[35px]">
           {navLinks.map((link) => {
             const { id, url, text, icon } = link;
             return (
