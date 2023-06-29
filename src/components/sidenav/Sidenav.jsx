@@ -54,12 +54,20 @@ const SideNav = ({ isNavOpen }) => {
           )}
         </div>
         <div className="splitter h-[1px] w-[100%] bg-[#eee]"></div>
-        <article className="nav flex flex-col justify-center items-center pt-[35px]">
+        <article
+          className={`nav flex flex-col pt-[35px] ${
+            !isNavOpen ? "justify-center items-center" : ""
+          }`}
+        >
           {navLinks.map((link) => {
             const { id, url, text, icon } = link;
             return (
               <div className="link flex mb-[40px] group" key={id}>
-                <div className="icon flex justify-center items-center hover:cursor-pointer">
+                <div
+                  className={`icon flex justify-center items-center hover:cursor-pointer ${
+                    isNavOpen ? "pl-[30px]" : ""
+                  }`}
+                >
                   {icon}
                 </div>
                 {isNavOpen && (
