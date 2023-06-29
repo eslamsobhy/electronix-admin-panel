@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
@@ -11,6 +11,14 @@ function App() {
   const navHandler = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setIsNavOpen(false));
+
+    return () => {
+      window.removeEventListener("resize", navHandler);
+    };
+  }, []);
 
   return (
     <>
