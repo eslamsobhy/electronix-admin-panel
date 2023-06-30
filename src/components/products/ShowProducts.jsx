@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useGlobalContext } from "../../../context";
+import Loading from "../loading/Loading";
+
 const tableItems = [
   {
     name: "Liam James",
@@ -34,6 +37,12 @@ const tableItems = [
 ];
 
 const ShowProducts = () => {
+  const { products, categories, loading } = useGlobalContext().state;
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className="max-w-screen-xl mx-auto mt-[30px] px-4 md:px-8">
@@ -64,30 +73,35 @@ const ShowProducts = () => {
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y">
-              {tableItems.map((item, idx) => (
-                <tr key={idx}>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {item.position}
-                  </td>
-                  <td className="text-right px-6 whitespace-nowrap">
-                    <a
-                      href="javascript:void()"
-                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                    >
-                      Edit
-                    </a>
-                    <button
-                      href="javascript:void()"
-                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {products.map(({ _id, name, price, category_id, brand }) => {
+                const category = categories.find(
+                  (cat) => cat._id == category_id
+                );
+                return (
+                  <tr key={_id}>
+                    <td className="px-6 py-4 whitespace-nowrap">{name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{price}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {category.category_name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{brand}</td>
+                    <td className="text-right px-6 whitespace-nowrap">
+                      <a
+                        href="#"
+                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Edit
+                      </a>
+                      <button
+                        href="#"
+                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
