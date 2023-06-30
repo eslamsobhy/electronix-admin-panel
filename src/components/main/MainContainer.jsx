@@ -7,7 +7,7 @@ import Loading from "../loading/Loading";
 import { useGlobalContext } from "../../../context";
 
 const MainContainer = () => {
-  const { products, categories, users, loading } = useGlobalContext().state;
+  const { products, categories, users, loading } = useGlobalContext();
 
   if (loading) {
     return <Loading />;

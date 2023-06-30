@@ -10,6 +10,8 @@ const reducer = (state, action) => {
       return { ...state, loading: true };
     case "DISPLAY_DATA":
       return { ...state, loading: false };
+    case "DELETE_ITEM":
+
     default:
       return state;
   }

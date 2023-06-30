@@ -5,21 +5,7 @@ import Loading from "../loading/Loading";
 import { useGlobalContext } from "../../../context";
 
 const ShowCategories = () => {
-  const { categories, loading } = useGlobalContext().state;
-
-  const [showConfirm, setShowConfirm] = useState(false);
-
-  const handleDeleteButton = () => {
-    setShowConfirm(true);
-  };
-
-  const handleCancel = () => {
-    setShowConfirm(false);
-  };
-
-  const handleConfirm = () => {
-    setShowConfirm(false);
-  };
+  const { categories, loading, confirmDeletion } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
@@ -27,9 +13,7 @@ const ShowCategories = () => {
 
   return (
     <>
-      {showConfirm && (
-        <Confirm handleCancel={handleCancel} handleConfirm={handleConfirm} />
-      )}
+      {confirmDeletion && <Confirm />}
       <div className="max-w-screen-xl mx-auto mt-[30px] px-4 md:px-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -72,7 +56,6 @@ const ShowCategories = () => {
                       Edit
                     </a>
                     <button
-                      onClick={() => handleDeleteButton(item.id)}
                       href="#"
                       className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                     >

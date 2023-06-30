@@ -4,6 +4,8 @@ import reducer from "./reducer";
 
 // Define the initial state
 const initialState = {
+  module: "",
+  confirmDeletion: false,
   loading: true,
   loggedIn: false,
   products: [],
@@ -38,9 +40,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
   );
 };
 

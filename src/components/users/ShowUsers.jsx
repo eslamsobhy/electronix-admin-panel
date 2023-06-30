@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../../context";
 import Loading from "../loading/Loading";
 
 const ShowUsers = () => {
-  const { users, loading } = useGlobalContext().state;
+  const { users, loading } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
