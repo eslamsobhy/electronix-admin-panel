@@ -57,7 +57,7 @@ const ShowUsers = () => {
           </div>
           <div className="mt-3 md:mt-0">
             <a
-              href="javascript:void(0)"
+              href="#"
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
             >
               Add user

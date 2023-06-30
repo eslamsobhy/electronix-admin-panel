@@ -1,31 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Confirm from "../confirmation/Confirm";
 
 const tableItems = [
   {
+    id: 1,
     name: "Liam James",
     email: "liamjames@example.com",
     position: "Software engineer",
     salary: "$100K",
   },
   {
+    id: 2,
     name: "Olivia Emma",
     email: "oliviaemma@example.com",
     position: "Product designer",
     salary: "$90K",
   },
   {
+    id: 3,
     name: "William Benjamin",
     email: "william.benjamin@example.com",
     position: "Front-end developer",
     salary: "$80K",
   },
   {
+    id: 4,
     name: "Henry Theodore",
     email: "henrytheodore@example.com",
     position: "Laravel engineer",
     salary: "$120K",
   },
   {
+    id: 5,
     name: "Amelia Elijah",
     email: "amelia.elijah@example.com",
     position: "Open source manager",
@@ -34,8 +41,25 @@ const tableItems = [
 ];
 
 const ShowCategories = () => {
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleDeleteButton = () => {
+    setShowConfirm(true);
+  };
+
+  const handleCancel = () => {
+    setShowConfirm(false);
+  };
+
+  const handleConfirm = () => {
+    setShowConfirm(false);
+  };
+
   return (
     <>
+      {showConfirm && (
+        <Confirm handleCancel={handleCancel} handleConfirm={handleConfirm} />
+      )}
       <div className="max-w-screen-xl mx-auto mt-[30px] px-4 md:px-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -45,7 +69,7 @@ const ShowCategories = () => {
           </div>
           <div className="mt-3 md:mt-0">
             <a
-              href="javascript:void(0)"
+              href="#"
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
             >
               Add new category
@@ -72,13 +96,14 @@ const ShowCategories = () => {
                   </td>
                   <td className="text-right px-6 whitespace-nowrap">
                     <a
-                      href="javascript:void()"
+                      href="#"
                       className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                     >
                       Edit
                     </a>
                     <button
-                      href="javascript:void()"
+                      onClick={() => handleDeleteButton(item.id)}
+                      href="#"
                       className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                     >
                       Delete
