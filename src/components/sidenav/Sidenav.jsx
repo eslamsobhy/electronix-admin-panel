@@ -42,6 +42,7 @@ const SideNav = ({ isNavOpen }) => {
                 key={link.id}
               >
                 <div
+                  title={`${isNavOpen ? "" : link.text}`}
                   className={`icon flex justify-center items-center hover:cursor-pointer ${
                     isNavOpen ? "pl-[30px]" : ""
                   }`}
