@@ -36,7 +36,7 @@ const tableItems = [
 const ShowCategories = () => {
   return (
     <>
-      <div className="max-w-screen-xl mx-auto my-[30px] px-4 md:px-8">
+      <div className="max-w-screen-xl mx-auto mt-[30px] px-4 md:px-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
             <h3 className="text-amber-700 text-xl font-bold sm:text-2xl">
