@@ -1,10 +1,11 @@
 import React from "react";
 
 import { useGlobalContext } from "../../../context";
+import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
 
 const ShowUsers = () => {
-  const { users, loading } = useGlobalContext();
+  const { users, loading, confirmDeletion, deleteItem } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
@@ -12,6 +13,7 @@ const ShowUsers = () => {
 
   return (
     <>
+      {confirmDeletion && <Confirm />}
       <div className="max-w-screen-xl mx-auto mt-[30px] px-4 md:px-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -65,6 +67,7 @@ const ShowUsers = () => {
                         Edit
                       </a>
                       <button
+                        onClick={() => deleteItem(_id, "user")}
                         href="#"
                         className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                       >

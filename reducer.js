@@ -11,7 +11,12 @@ const reducer = (state, action) => {
     case "DISPLAY_DATA":
       return { ...state, loading: false };
     case "DELETE_ITEM":
-
+      return {
+        ...state,
+        confirmDeletion: true,
+        module: action.payload.module,
+        toBeDeletedItem: action.payload.id,
+      };
     default:
       return state;
   }

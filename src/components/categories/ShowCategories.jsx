@@ -5,7 +5,8 @@ import Loading from "../loading/Loading";
 import { useGlobalContext } from "../../../context";
 
 const ShowCategories = () => {
-  const { categories, loading, confirmDeletion } = useGlobalContext();
+  const { categories, loading, confirmDeletion, deleteItem } =
+    useGlobalContext();
 
   if (loading) {
     return <Loading />;
@@ -56,6 +57,7 @@ const ShowCategories = () => {
                       Edit
                     </a>
                     <button
+                      onClick={() => deleteItem(_id, "category")}
                       href="#"
                       className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                     >
