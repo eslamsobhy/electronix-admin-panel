@@ -4,7 +4,7 @@ import reducer from "./reducer";
 
 // Define the initial state
 const initialState = {
-  loading: false,
+  loading: true,
   loggedIn: false,
   products: [],
   categories: [],
@@ -32,7 +32,9 @@ export const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    dispatch({ type: "LOADING" });
     fetchData();
+    dispatch({ type: "DISPLAY_DATA" });
   }, []);
 
   return (

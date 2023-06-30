@@ -6,6 +6,10 @@ const reducer = (state, action) => {
       return { ...state, categories: action.payload };
     case "SET_USERS":
       return { ...state, users: action.payload };
+    case "LOADING":
+      return { ...state, loading: true };
+    case "DISPLAY_DATA":
+      return { ...state, loading: false };
     default:
       return state;
   }
