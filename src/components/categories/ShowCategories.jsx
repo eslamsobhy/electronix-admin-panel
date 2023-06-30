@@ -1,46 +1,12 @@
 import React, { useState } from "react";
 
 import Confirm from "../confirmation/Confirm";
-
-const tableItems = [
-  {
-    id: 1,
-    name: "Liam James",
-    email: "liamjames@example.com",
-    position: "Software engineer",
-    salary: "$100K",
-  },
-  {
-    id: 2,
-    name: "Olivia Emma",
-    email: "oliviaemma@example.com",
-    position: "Product designer",
-    salary: "$90K",
-  },
-  {
-    id: 3,
-    name: "William Benjamin",
-    email: "william.benjamin@example.com",
-    position: "Front-end developer",
-    salary: "$80K",
-  },
-  {
-    id: 4,
-    name: "Henry Theodore",
-    email: "henrytheodore@example.com",
-    position: "Laravel engineer",
-    salary: "$120K",
-  },
-  {
-    id: 5,
-    name: "Amelia Elijah",
-    email: "amelia.elijah@example.com",
-    position: "Open source manager",
-    salary: "$75K",
-  },
-];
+import Loading from "../loading/Loading";
+import { useGlobalContext } from "../../../context";
 
 const ShowCategories = () => {
+  const { categories, loading } = useGlobalContext().state;
+
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleDeleteButton = () => {
@@ -54,6 +20,10 @@ const ShowCategories = () => {
   const handleConfirm = () => {
     setShowConfirm(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -87,13 +57,13 @@ const ShowCategories = () => {
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y">
-              {tableItems.map((item, idx) => (
-                <tr key={idx}>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
+              {categories.map(({ _id, category_name, image, description }) => (
+                <tr key={_id}>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {item.position}
+                    {category_name}
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{image}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{description}</td>
                   <td className="text-right px-6 whitespace-nowrap">
                     <a
                       href="#"
