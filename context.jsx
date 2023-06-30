@@ -19,22 +19,22 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   //   Fetch data from APIs using axios
-  const fetchData = () => {
-    axios.get("http://localhost:8000/products").then((res) => {
+  const fetchData = async () => {
+    dispatch({ type: "LOADING" });
+    await axios.get("http://localhost:8000/products").then((res) => {
       dispatch({ type: "SET_PRODUCTS", payload: res.data });
     });
-    axios.get("http://localhost:8000/categories").then((res) => {
+    await axios.get("http://localhost:8000/categories").then((res) => {
       dispatch({ type: "SET_CATEGORIES", payload: res.data });
     });
-    axios.get("http://localhost:8000/users").then((res) => {
+    await axios.get("http://localhost:8000/users").then((res) => {
       dispatch({ type: "SET_USERS", payload: res.data });
     });
+    dispatch({ type: "DISPLAY_DATA" });
   };
 
   useEffect(() => {
-    dispatch({ type: "LOADING" });
     fetchData();
-    dispatch({ type: "DISPLAY_DATA" });
   }, []);
 
   return (
