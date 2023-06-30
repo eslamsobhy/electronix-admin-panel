@@ -4,7 +4,7 @@ import reducer from "./reducer";
 
 // Define the initial state
 const initialState = {
-  itemToBeDeleted: "",
+  toBeDeletedItem: "",
   module: "",
   confirmDeletion: false,
   loading: true,
@@ -41,12 +41,17 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "DELETE_ITEM", payload: { id: id, module: module } });
   };
 
+  // cancel deletion
+  const cancelDeletion = () => {
+    dispatch({ type: "CANCEL_DELETION" });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, deleteItem }}>
+    <AppContext.Provider value={{ ...state, deleteItem, cancelDeletion }}>
       {children}
     </AppContext.Provider>
   );

@@ -17,6 +17,13 @@ const reducer = (state, action) => {
         module: action.payload.module,
         toBeDeletedItem: action.payload.id,
       };
+    case "CANCEL_DELETION":
+      return {
+        ...state,
+        confirmDeletion: false,
+        module: "",
+        toBeDeletedItem: "",
+      };
     default:
       return state;
   }
