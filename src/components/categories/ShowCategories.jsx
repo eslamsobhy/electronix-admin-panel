@@ -52,7 +52,9 @@ const ShowCategories = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         {category_name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{image}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {image?.url}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {description}
                       </td>

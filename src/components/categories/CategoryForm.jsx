@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,16 +7,17 @@ const CategoryForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { error }
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { category_name, image, description } = data;
-    await axios.post("http://localhost:8000/categories", {
-      category_name,
-      image,
-      description,
-    });
+    const formData = new FormData();
+    formData.append("category_name", data.category_name);
+    formData.append("image", data.image[0]);
+    formData.append("description", data.description);
+
+    // const { category_name, image, description } = data;
+    await axios.post("http://localhost:8000/categories", formData);
     console.log(data.image["0"]);
     toast("Category added successfully!");
   };
