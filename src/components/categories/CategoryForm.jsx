@@ -34,59 +34,60 @@ const CategoryForm = () => {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="form-container mt-[50px] flex flex-wrap gap-[2rem] justify-center"
+          className="form-container mt-[50px] flex flex-col gap-[2rem] justify-center items-center"
         >
-          <div className="form-group">
-            <label
-              htmlFor="catName"
-              className="block text-xs font-medium text-gray-700"
-            >
-              Category Name
-            </label>
+          <article className="inputs flex flex-wrap gap-[4rem]">
+            <div className="form-group">
+              <label
+                htmlFor="catName"
+                className="block text-xs font-medium text-gray-700"
+              >
+                Category Name
+              </label>
 
-            <input
-              {...register("category_name")}
-              type="text"
-              id="catName"
-              placeholder="Laptops"
-              className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
-            />
-          </div>
-          <div className="form-group">
-            <label
-              htmlFor="description"
-              className="block text-xs font-medium text-gray-700"
-            >
-              Description
-            </label>
+              <input
+                {...register("category_name")}
+                type="text"
+                id="catName"
+                placeholder="Laptops"
+                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+              />
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="description"
+                className="block text-xs font-medium text-gray-700"
+              >
+                Description
+              </label>
 
-            <input
-              {...register("description")}
-              type="text"
-              id="description"
-              placeholder="description for laptops"
-              className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
-            />
-          </div>
-          <div className="form-group w-[90%] pl-[12px]">
-            <label
-              htmlFor="image"
-              className="block text-xs font-medium text-gray-700"
-            >
-              Image
-            </label>
+              <input
+                {...register("description")}
+                type="text"
+                id="description"
+                placeholder="description for laptops"
+                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+              />
+            </div>
+            <div className="form-group w-[90%] pl-[12px]">
+              <label
+                htmlFor="image"
+                className="block text-xs font-medium text-gray-700"
+              >
+                Image
+              </label>
 
-            <input
-              {...register("image")}
-              type="file"
-              id="image"
-              placeholder="john@rhcp.com"
-              className="mt-1  rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
-            />
-          </div>
+              <input
+                {...register("image")}
+                type="file"
+                id="image"
+                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+              />
+            </div>
+          </article>
           <div className="mt-3 md:mt-0">
             <button className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm">
-              Add category
+              Save category
             </button>
           </div>
         </form>
