@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -10,6 +13,7 @@ import MainContainer from "./components/main/MainContainer";
 import ShowUsers from "./components/users/ShowUsers";
 import ShowProducts from "./components/products/ShowProducts";
 import ShowCategories from "./components/categories/ShowCategories";
+import CategoryForm from "./components/categories/CategoryForm";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -37,8 +41,10 @@ function App() {
             <Route path="/users" element={<ShowUsers />} />
             <Route path="/products" element={<ShowProducts />} />
             <Route path="/categories" element={<ShowCategories />} />
+            <Route path="/category" element={<CategoryForm />} />
           </Routes>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

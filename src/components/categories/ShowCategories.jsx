@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
@@ -24,12 +25,12 @@ const ShowCategories = () => {
             </h3>
           </div>
           <div className="mt-3 md:mt-0">
-            <a
-              href="#"
+            <Link
+              to="/category"
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
             >
               Add new category
-            </a>
+            </Link>
           </div>
         </div>
         {categories.length < 1 && <NoData />}
