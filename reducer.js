@@ -63,6 +63,9 @@ const reducer = (state, action) => {
         return cat;
       });
       return { ...state, categories: newCats };
+    case "CREATE_CATEGORY":
+      const newCates = [...state.categories, action.payload];
+      return { ...state, categories: newCates };
     default:
       return state;
   }

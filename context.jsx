@@ -71,6 +71,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "UPDATE_CATEGORY", payload: category });
   };
 
+  // Create category
+  const createCategory = (category) => {
+    dispatch({ type: "CREATE_CATEGORY", payload: category });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -83,6 +88,7 @@ export const AppProvider = ({ children }) => {
         cancelDeletion,
         deletionConfirm,
         updateCategory,
+        createCategory,
       }}
     >
       {children}

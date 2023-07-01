@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+
+import { useGlobalContext } from "../../../context";
 
 const CategoryForm = () => {
+  const { createCategory } = useGlobalContext();
+
   const {
     register,
     handleSubmit,
@@ -19,7 +23,13 @@ const CategoryForm = () => {
     formData.append("image", image[0]);
     formData.append("description", description);
 
-    await axios.post("http://localhost:8000/categories", formData);
+    const response = await axios.post(
+      "http://localhost:8000/categories",
+      formData
+    );
+
+    // console.log(response.data);
+    createCategory(response.data.createdCategory);
     toast("Category added successfully!");
     reset();
   };

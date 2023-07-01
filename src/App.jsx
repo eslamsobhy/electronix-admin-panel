@@ -42,7 +42,7 @@ function App() {
             <Route path="/users" element={<ShowUsers />} />
             <Route path="/products" element={<ShowProducts />} />
             <Route path="/categories" element={<ShowCategories />} />
-            <Route path="/category" element={<CategoryForm />} />
+            <Route path="/add-category" element={<CategoryForm />} />
             <Route path="/edit-category/:id" element={<UpdateCategory />} />
           </Routes>
         </div>
