@@ -3,14 +3,15 @@ import React from "react";
 import { useGlobalContext } from "../../../context";
 
 const Confirm = () => {
-  const { cancelDeletion } = useGlobalContext();
+  const { cancelDeletion, toBeDeletedItem, module, deletionConfirm } =
+    useGlobalContext();
 
   return (
     <>
       <div className="container flex justify-center absolute pl-[10%] top-[10%]">
         <div className="rounded-lg bg-white p-8 shadow-2xl">
           <h2 className="text-lg font-bold">
-            Are you sure you want to delete this category?
+            {`Are you sure you want to delete this ${module}?`}
           </h2>
 
           <p className="mt-2 text-sm text-gray-500">
@@ -19,7 +20,7 @@ const Confirm = () => {
 
           <div className="mt-4 flex gap-2">
             <button
-              onClick={() => {}}
+              onClick={() => deletionConfirm(toBeDeletedItem, module)}
               type="button"
               className="rounded bg-green-50 px-4 py-2 text-sm font-medium text-green-600"
             >

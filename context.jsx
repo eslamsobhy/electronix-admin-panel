@@ -46,12 +46,31 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "CANCEL_DELETION" });
   };
 
+  // confirm deletion
+  const deletionConfirm = (id, module) => {
+    switch (module) {
+      case "category":
+        dispatch({ type: "DELETE_CATEGORY", payload: id });
+        break;
+      case "user":
+        dispatch({ type: "DELETE_USER", payload: id });
+        break;
+      case "product":
+        dispatch({ type: "DELETE_PRODUCT", payload: id });
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, deleteItem, cancelDeletion }}>
+    <AppContext.Provider
+      value={{ ...state, deleteItem, cancelDeletion, deletionConfirm }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -24,6 +24,37 @@ const reducer = (state, action) => {
         module: "",
         toBeDeletedItem: "",
       };
+    case "DELETE_CATEGORY":
+      const newCategories = state.categories.filter(
+        (cat) => cat._id != action.payload
+      );
+      return {
+        ...state,
+        categories: newCategories,
+        confirmDeletion: false,
+        module: "",
+        toBeDeletedItem: "",
+      };
+    case "DELETE_PRODUCT":
+      const newProducts = state.products.filter(
+        (prod) => prod._id != action.payload
+      );
+      return {
+        ...state,
+        products: newProducts,
+        confirmDeletion: false,
+        module: "",
+        toBeDeletedItem: "",
+      };
+    case "DELETE_USER":
+      const newUsers = state.users.filter((user) => user._id != action.payload);
+      return {
+        ...state,
+        users: newUsers,
+        confirmDeletion: false,
+        module: "",
+        toBeDeletedItem: "",
+      };
     default:
       return state;
   }

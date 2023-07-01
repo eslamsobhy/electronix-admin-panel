@@ -52,7 +52,7 @@ const ShowProducts = () => {
                     <td className="px-6 py-4 whitespace-nowrap">{name}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{price}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {category.category_name}
+                      {category?.category_name}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{brand}</td>
                     <td className="text-right px-6 whitespace-nowrap">
