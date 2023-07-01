@@ -59,12 +59,12 @@ const ShowCategories = () => {
                         {description}
                       </td>
                       <td className="text-right px-6 whitespace-nowrap">
-                        <a
-                          href="#"
+                        <Link
+                          to={`/edit-category/${_id}`}
                           className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                         >
                           Edit
-                        </a>
+                        </Link>
                         <button
                           onClick={() => deleteItem(_id, "category")}
                           href="#"

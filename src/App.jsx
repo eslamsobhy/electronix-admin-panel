@@ -14,6 +14,7 @@ import ShowUsers from "./components/users/ShowUsers";
 import ShowProducts from "./components/products/ShowProducts";
 import ShowCategories from "./components/categories/ShowCategories";
 import CategoryForm from "./components/categories/CategoryForm";
+import UpdateCategory from "./components/categories/UpdateCategory";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -42,6 +43,7 @@ function App() {
             <Route path="/products" element={<ShowProducts />} />
             <Route path="/categories" element={<ShowCategories />} />
             <Route path="/category" element={<CategoryForm />} />
+            <Route path="/edit-category/:id" element={<UpdateCategory />} />
           </Routes>
         </div>
         <ToastContainer />
