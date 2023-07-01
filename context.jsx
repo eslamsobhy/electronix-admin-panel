@@ -50,12 +50,15 @@ export const AppProvider = ({ children }) => {
   const deletionConfirm = (id, module) => {
     switch (module) {
       case "category":
+        axios.delete(`http://localhost:8000/categories/${id}`);
         dispatch({ type: "DELETE_CATEGORY", payload: id });
         break;
       case "user":
+        axios.delete(`http://localhost:8000/users/${id}`);
         dispatch({ type: "DELETE_USER", payload: id });
         break;
       case "product":
+        axios.delete(`http://localhost:8000/products/${id}`);
         dispatch({ type: "DELETE_PRODUCT", payload: id });
         break;
       default:
