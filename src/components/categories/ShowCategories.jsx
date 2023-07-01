@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
+import NoData from "../no-data/NoData";
 import { useGlobalContext } from "../../../context";
 
 const ShowCategories = () => {
@@ -31,44 +32,51 @@ const ShowCategories = () => {
             </a>
           </div>
         </div>
-        <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-          <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b">
-              <tr>
-                <th className="py-3 px-6">Category Name</th>
-                <th className="py-3 px-6">Image</th>
-                <th className="py-3 px-6">Description</th>
-                <th className="py-3 px-6"></th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-600 divide-y">
-              {categories.map(({ _id, category_name, image, description }) => (
-                <tr key={_id}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {category_name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{image}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{description}</td>
-                  <td className="text-right px-6 whitespace-nowrap">
-                    <a
-                      href="#"
-                      className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                    >
-                      Edit
-                    </a>
-                    <button
-                      onClick={() => deleteItem(_id, "category")}
-                      href="#"
-                      className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
-                    >
-                      Delete
-                    </button>
-                  </td>
+        {categories.length < 1 && <NoData />}
+        {categories.length > 0 && (
+          <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+            <table className="w-full table-auto text-sm text-left">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+                <tr>
+                  <th className="py-3 px-6">Category Name</th>
+                  <th className="py-3 px-6">Image</th>
+                  <th className="py-3 px-6">Description</th>
+                  <th className="py-3 px-6"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="text-gray-600 divide-y">
+                {categories.map(
+                  ({ _id, category_name, image, description }) => (
+                    <tr key={_id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {category_name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">{image}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {description}
+                      </td>
+                      <td className="text-right px-6 whitespace-nowrap">
+                        <a
+                          href="#"
+                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        >
+                          Edit
+                        </a>
+                        <button
+                          onClick={() => deleteItem(_id, "category")}
+                          href="#"
+                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </>
   );

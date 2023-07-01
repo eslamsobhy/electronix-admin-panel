@@ -3,6 +3,7 @@ import React from "react";
 import { useGlobalContext } from "../../../context";
 import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
+import NoData from "../no-data/NoData";
 
 const ShowUsers = () => {
   const { users, loading, confirmDeletion, deleteItem } = useGlobalContext();
@@ -30,56 +31,67 @@ const ShowUsers = () => {
             </a>
           </div>
         </div>
-        <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-          <table className="w-full table-auto text-sm text-left">
-            <thead className="bg-gray-50 text-gray-600 font-medium border-b">
-              <tr>
-                <th className="py-3 px-6">Username</th>
-                <th className="py-3 px-6">Phone Number</th>
-                <th className="py-3 px-6">Email</th>
-                <th className="py-3 px-6">Role</th>
-                <th className="py-3 px-6"></th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-600 divide-y">
-              {users.map(
-                ({ _id, firstName, lastName, email, role, avatar, phone }) => (
-                  <tr key={_id}>
-                    <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
-                      <img src={avatar} className="w-10 h-10 rounded-full" />
-                      <div>
-                        <span className="block text-gray-700 text-sm font-medium">
-                          {firstName}
-                        </span>
-                        <span className="block text-gray-700 text-xs">
-                          {lastName}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{phone}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{role}</td>
-                    <td className="text-right px-6 whitespace-nowrap">
-                      <a
-                        href="#"
-                        className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
-                      >
-                        Edit
-                      </a>
-                      <button
-                        onClick={() => deleteItem(_id, "user")}
-                        href="#"
-                        className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
-        </div>
+        {users.length < 1 && <NoData />}
+        {users.length > 0 && (
+          <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+            <table className="w-full table-auto text-sm text-left">
+              <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+                <tr>
+                  <th className="py-3 px-6">Username</th>
+                  <th className="py-3 px-6">Phone Number</th>
+                  <th className="py-3 px-6">Email</th>
+                  <th className="py-3 px-6">Role</th>
+                  <th className="py-3 px-6"></th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-600 divide-y">
+                {users.map(
+                  ({
+                    _id,
+                    firstName,
+                    lastName,
+                    email,
+                    role,
+                    avatar,
+                    phone,
+                  }) => (
+                    <tr key={_id}>
+                      <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
+                        <img src={avatar} className="w-10 h-10 rounded-full" />
+                        <div>
+                          <span className="block text-gray-700 text-sm font-medium">
+                            {firstName}
+                          </span>
+                          <span className="block text-gray-700 text-xs">
+                            {lastName}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">{phone}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{email}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{role}</td>
+                      <td className="text-right px-6 whitespace-nowrap">
+                        <a
+                          href="#"
+                          className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        >
+                          Edit
+                        </a>
+                        <button
+                          onClick={() => deleteItem(_id, "user")}
+                          href="#"
+                          className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </>
   );
