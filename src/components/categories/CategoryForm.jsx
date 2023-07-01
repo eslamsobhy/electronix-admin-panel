@@ -7,19 +7,21 @@ const CategoryForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { error }
+    formState: { error },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("category_name", data.category_name);
-    formData.append("image", data.image[0]);
-    formData.append("description", data.description);
+    const { category_name, image, description } = data;
 
-    // const { category_name, image, description } = data;
+    const formData = new FormData();
+    formData.append("category_name", category_name);
+    formData.append("image", image[0]);
+    formData.append("description", description);
+
     await axios.post("http://localhost:8000/categories", formData);
-    console.log(data.image["0"]);
     toast("Category added successfully!");
+    reset();
   };
 
   return (
