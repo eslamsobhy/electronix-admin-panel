@@ -66,13 +66,24 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // Update Category
+  const updateCategory = (category) => {
+    dispatch({ type: "UPDATE_CATEGORY", payload: category });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <AppContext.Provider
-      value={{ ...state, deleteItem, cancelDeletion, deletionConfirm }}
+      value={{
+        ...state,
+        deleteItem,
+        cancelDeletion,
+        deletionConfirm,
+        updateCategory,
+      }}
     >
       {children}
     </AppContext.Provider>

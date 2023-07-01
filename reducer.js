@@ -55,6 +55,14 @@ const reducer = (state, action) => {
         module: "",
         toBeDeletedItem: "",
       };
+    case "UPDATE_CATEGORY":
+      const newCats = state.categories.map((cat) => {
+        if (cat._id == action.payload.id) {
+          return action.payload;
+        }
+        return cat;
+      });
+      return { ...state, categories: newCats };
     default:
       return state;
   }

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useGlobalContext } from "../../../context";
 
 const UpdateCategory = () => {
-  const { categories } = useGlobalContext();
+  const { categories, updateCategory } = useGlobalContext();
   const { id } = useParams();
 
   const category = categories.find((cat) => cat._id == id);
@@ -22,11 +22,17 @@ const UpdateCategory = () => {
   const onSubmit = async (data) => {
     const { category_name, image, description } = data;
 
-    await axios.patch(`http://localhost:8000/categories/${id}`, {
-      category_name,
-      image,
-      description,
-    });
+    const response = await axios.patch(
+      `http://localhost:8000/categories/${id}`,
+      {
+        category_name,
+        image,
+        description,
+      }
+    );
+
+    // console.log(response.data.updatedCategory);
+    updateCategory(response.data.updatedCategory);
     toast("Category updated successfully!");
   };
 
