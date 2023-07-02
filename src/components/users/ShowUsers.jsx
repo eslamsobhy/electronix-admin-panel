@@ -74,12 +74,12 @@ const ShowUsers = () => {
                       <td className="px-6 py-4 whitespace-nowrap">{email}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{role}</td>
                       <td className="text-right px-6 whitespace-nowrap">
-                        <a
-                          href="#"
+                        <Link
+                          to={`/edit-user/${_id}`}
                           className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                         >
                           Edit
-                        </a>
+                        </Link>
                         <button
                           onClick={() => deleteItem(_id, "user")}
                           href="#"
