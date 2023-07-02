@@ -81,6 +81,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "UPDATE_USER", payload: user });
   };
 
+  // add user
+  const addUser = (user) => {
+    dispatch({ type: "ADD_USER", payload: user });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -95,6 +100,7 @@ export const AppProvider = ({ children }) => {
         updateCategory,
         createCategory,
         updateUser,
+        addUser,
       }}
     >
       {children}

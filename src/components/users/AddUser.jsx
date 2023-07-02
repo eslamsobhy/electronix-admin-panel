@@ -3,7 +3,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import { useGlobalContext } from "../../../context";
+
 const AddUser = () => {
+  const { addUser } = useGlobalContext();
+
   const {
     register,
     handleSubmit,
@@ -14,7 +18,7 @@ const AddUser = () => {
   const onSubmit = async (data) => {
     const { first_name, last_name, phone_number, password, email, role } = data;
 
-    await axios.post("http://localhost:8000/users/signup", {
+    const response = await axios.post("http://localhost:8000/users/signup", {
       first_name,
       last_name,
       phone_number,
@@ -22,6 +26,8 @@ const AddUser = () => {
       email,
       role,
     });
+
+    addUser(response.data.newUser);
 
     toast("User created successfully!");
     reset();
