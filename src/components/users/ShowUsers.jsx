@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../../../context";
 import Confirm from "../confirmation/Confirm";
@@ -23,12 +24,12 @@ const ShowUsers = () => {
             </h3>
           </div>
           <div className="mt-3 md:mt-0">
-            <a
-              href="#"
+            <Link
+              to="/add-user"
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
             >
               Add user
-            </a>
+            </Link>
           </div>
         </div>
         {users.length < 1 && <NoData />}
