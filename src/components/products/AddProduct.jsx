@@ -17,6 +17,19 @@ const AddProduct = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
+    const { name, price, brand, category_id, details, images } = data;
+    // const details = { screen_size: "123", owner: "John" };
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("images", images);
+    formData.append("price", price);
+    formData.append("category_id", category_id);
+    formData.append("details", details);
+    formData.append("brand", brand);
+
+    await axios.post("http://localhost:8000/products", formData);
+    toast("Product created successfully!");
+    reset();
   };
 
   return (
