@@ -35,7 +35,11 @@ function App() {
     <>
       <div className="flex">
         <SideNav isNavOpen={isNavOpen} />
-        <div className="main w-[100%]">
+        <div
+          className={`main ${
+            isNavOpen ? "w-[80%] ml-[20%]" : "w-[93.7%] ml-[6.3%]"
+          }`}
+        >
           <Navbar isNavOpen={isNavOpen} navHandler={navHandler} />
           <Routes>
             <Route path="/" element={<MainContainer />} />

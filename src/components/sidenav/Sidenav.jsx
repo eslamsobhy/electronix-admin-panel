@@ -8,8 +8,8 @@ const SideNav = ({ isNavOpen }) => {
   return (
     <>
       <section
-        className={`side-nav shadow-lg shadow-indigo-500/40 h-[100vh] flex flex-col ${
-          isNavOpen ? "w-[300px]" : "w-[80px]"
+        className={`side-nav shadow-lg shadow-indigo-500/40 h-[100vh] fixed top-[0] left-[0] flex flex-col ${
+          isNavOpen ? "w-[20%]" : "w-[6.2%]"
         }`}
       >
         <div className="flex justify-center items-center py-[1rem]">
