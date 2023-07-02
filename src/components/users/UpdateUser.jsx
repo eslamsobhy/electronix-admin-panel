@@ -8,7 +8,7 @@ import { useGlobalContext } from "../../../context";
 
 const UpdateUser = () => {
   // users stored in the global context (coming from db)
-  const { users } = useGlobalContext();
+  const { users, updateUser } = useGlobalContext();
 
   // user being updated
   const { id } = useParams();
@@ -25,7 +25,7 @@ const UpdateUser = () => {
   // when submitting the form
   const onSubmit = async (data) => {
     const { first_name, last_name, role, email, phone_number } = data;
-    await axios.patch(`http://localhost:8000/users/${id}`, {
+    const response = await axios.patch(`http://localhost:8000/users/${id}`, {
       first_name,
       last_name,
       role,
@@ -33,8 +33,9 @@ const UpdateUser = () => {
       phone_number,
     });
 
+    updateUser(response.data);
+
     toast("User updated successfully!");
-    console.log(user);
   };
 
   useEffect(() => {

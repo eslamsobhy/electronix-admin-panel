@@ -66,6 +66,14 @@ const reducer = (state, action) => {
     case "CREATE_CATEGORY":
       const newCates = [...state.categories, action.payload];
       return { ...state, categories: newCates };
+    case "UPDATE_USER":
+      const users = state.users.map((user) => {
+        if (user._id == action.payload.id) {
+          return action.payload;
+        }
+        return user;
+      });
+      return { ...state, users: users };
     default:
       return state;
   }
