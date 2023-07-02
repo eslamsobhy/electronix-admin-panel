@@ -23,7 +23,17 @@ const UpdateUser = () => {
   } = useForm();
 
   // when submitting the form
-  const onSubmit = () => {
+  const onSubmit = async (data) => {
+    const { first_name, last_name, role, email, phone_number } = data;
+    await axios.patch(`http://localhost:8000/users/${id}`, {
+      first_name,
+      last_name,
+      role,
+      email,
+      phone_number,
+    });
+
+    toast("User updated successfully!");
     console.log(user);
   };
 
