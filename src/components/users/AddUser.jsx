@@ -12,7 +12,19 @@ const AddUser = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    const { first_name, last_name, phone_number, password, email, role } = data;
+
+    await axios.post("http://localhost:8000/users/signup", {
+      first_name,
+      last_name,
+      phone_number,
+      password,
+      email,
+      role,
+    });
+
+    toast("User created successfully!");
+    reset();
   };
 
   return (

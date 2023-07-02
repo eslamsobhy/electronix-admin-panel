@@ -49,26 +49,28 @@ const ShowUsers = () => {
                 {users.map(
                   ({
                     _id,
-                    firstName,
-                    lastName,
+                    first_name,
+                    last_name,
                     email,
                     role,
                     avatar,
-                    phone,
+                    phone_number,
                   }) => (
                     <tr key={_id}>
                       <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
                         <img src={avatar} className="w-10 h-10 rounded-full" />
                         <div>
                           <span className="block text-gray-700 text-sm font-medium">
-                            {firstName}
+                            {first_name}
                           </span>
                           <span className="block text-gray-700 text-xs">
-                            {lastName}
+                            {last_name}
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{phone}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {phone_number}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">{email}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{role}</td>
                       <td className="text-right px-6 whitespace-nowrap">
