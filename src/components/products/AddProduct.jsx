@@ -12,20 +12,23 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { error },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    const { name, price, brand, category_id, details, images } = data;
-    // const details = { screen_size: "123", owner: "John" };
+    // console.log(data);
+    const { name, price, brand, category_name, images } = data;
+    const details = { screen_size: "123", owner: "John" };
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("images", images);
     formData.append("price", price);
-    formData.append("category_id", category_id);
-    formData.append("details", details);
+    formData.append("category_name", category_name);
+    formData.append("details", JSON.stringify(details));
     formData.append("brand", brand);
+
+    [...images].forEach((img) => {
+      formData.append("images", img);
+    });
 
     await axios.post("http://localhost:8000/products", formData);
     toast("Product created successfully!");
@@ -125,14 +128,14 @@ const AddProduct = () => {
               </label>
 
               <select
-                {...register("category_id")}
+                {...register("category_name")}
                 id="category"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 {categories.map((category) => {
                   return (
-                    <option key={category._id} value={category._id}>
+                    <option key={category._id} value={category.category_name}>
                       {category.category_name}
                     </option>
                   );
