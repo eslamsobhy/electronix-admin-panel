@@ -11,8 +11,19 @@ const Login = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/users/dashboard/login",
+        { email, password }
+      );
+      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      toast("Logged in successfully!");
+    } catch (e) {
+      console.log(e.response.data.message);
+    }
   };
 
   return (
@@ -20,7 +31,7 @@ const Login = () => {
       <section className="absolute w-full h-full flex justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex gap-[30px] shadow shadow-indigo-500/40 bg-[#f5f5f5] pr-[30px] rounded"
+          className="flex gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] pr-[30px] rounded"
         >
           <img
             src={`assets/login-${Math.floor(Math.random() * 3) + 1}.jpg`}
