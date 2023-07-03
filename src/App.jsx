@@ -23,7 +23,7 @@ import Login from "./components/login/Login";
 import { useGlobalContext } from "../context";
 
 function App() {
-  const { loggedIn, fetchData } = useGlobalContext();
+  const { loggedIn, fetchData, login } = useGlobalContext();
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -37,6 +37,12 @@ function App() {
     return () => {
       window.removeEventListener("resize", navHandler);
     };
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      login();
+    }
   }, []);
 
   useEffect(() => {
