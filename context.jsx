@@ -8,7 +8,7 @@ const initialState = {
   module: "",
   confirmDeletion: false,
   loading: true,
-  loggedIn: false,
+  loggedIn: true,
   products: [],
   categories: [],
   users: [],

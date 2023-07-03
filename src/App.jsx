@@ -18,8 +18,13 @@ import UpdateCategory from "./components/categories/UpdateCategory";
 import AddUser from "./components/users/AddUser";
 import AddProduct from "./components/products/AddProduct";
 import UpdateUser from "./components/users/UpdateUser";
+import Login from "./components/login/Login";
+
+import { useGlobalContext } from "../context";
 
 function App() {
+  const { loggedIn } = useGlobalContext();
+
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const navHandler = () => {
@@ -33,6 +38,10 @@ function App() {
       window.removeEventListener("resize", navHandler);
     };
   }, []);
+
+  if (loggedIn) {
+    return <Login />;
+  }
 
   return (
     <>
