@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 // Define the initial state
 const initialState = {
+  loggedInUser: {},
   toBeDeletedItem: "",
   module: "",
   confirmDeletion: false,
@@ -104,8 +105,8 @@ export const AppProvider = ({ children }) => {
   };
 
   // login
-  const login = () => {
-    dispatch({ type: "LOGIN" });
+  const login = (loggedInUser) => {
+    dispatch({ type: "LOGIN", payload: loggedInUser });
   };
 
   return (

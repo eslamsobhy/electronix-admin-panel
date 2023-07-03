@@ -22,8 +22,7 @@ const Login = () => {
         "http://localhost:8000/users/dashboard/login",
         { email, password }
       );
-      console.log(response);
-      login();
+      login(response.data.user);
       localStorage.setItem("token", response.data.token);
       toast.success("Logged in successfully!");
     } catch (e) {

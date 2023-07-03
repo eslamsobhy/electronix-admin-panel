@@ -78,7 +78,7 @@ const reducer = (state, action) => {
       const newUs = [...state.users, action.payload];
       return { ...state, users: newUs };
     case "LOGIN":
-      return { ...state, loggedIn: true };
+      return { ...state, loggedIn: true, loggedInUser: action.payload };
     default:
       return state;
   }
