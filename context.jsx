@@ -30,9 +30,13 @@ export const AppProvider = ({ children }) => {
     await axios.get("http://localhost:8000/categories").then((res) => {
       dispatch({ type: "SET_CATEGORIES", payload: res.data });
     });
-    await axios.get("http://localhost:8000/users").then((res) => {
-      dispatch({ type: "SET_USERS", payload: res.data });
-    });
+    await axios
+      .get("http://localhost:8000/users", {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      .then((res) => {
+        dispatch({ type: "SET_USERS", payload: res.data });
+      });
     dispatch({ type: "DISPLAY_DATA" });
   };
 
