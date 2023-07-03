@@ -25,19 +25,26 @@ export const AppProvider = ({ children }) => {
   //   Fetch data from APIs using axios
   const fetchData = async () => {
     dispatch({ type: "LOADING" });
-    await axios.get("http://localhost:8000/products").then((res) => {
-      dispatch({ type: "SET_PRODUCTS", payload: res.data });
-    });
-    await axios.get("http://localhost:8000/categories").then((res) => {
-      dispatch({ type: "SET_CATEGORIES", payload: res.data });
-    });
+    await axios
+      .get("http://localhost:8000/products")
+      .then((res) => {
+        dispatch({ type: "SET_PRODUCTS", payload: res.data });
+      })
+      .catch((err) => console.log(err.message));
+    await axios
+      .get("http://localhost:8000/categories")
+      .then((res) => {
+        dispatch({ type: "SET_CATEGORIES", payload: res.data });
+      })
+      .catch((err) => console.log(err.message));
     await axios
       .get("http://localhost:8000/users", {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((res) => {
         dispatch({ type: "SET_USERS", payload: res.data });
-      });
+      })
+      .catch((err) => console.log(err.message));
     dispatch({ type: "DISPLAY_DATA" });
   };
 
