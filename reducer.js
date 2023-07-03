@@ -82,6 +82,8 @@ const reducer = (state, action) => {
     case "PROFILE_POPUP":
       const toggle = state.profilePopup;
       return { ...state, profilePopup: !toggle };
+    case "LOGOUT":
+      return { ...state, loggedIn: false };
     default:
       return state;
   }

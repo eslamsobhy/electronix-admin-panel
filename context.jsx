@@ -112,8 +112,13 @@ export const AppProvider = ({ children }) => {
 
   // toggle profile pop up
   const toggleProfilePopup = () => {
-    console.log("from pop up");
     dispatch({ type: "PROFILE_POPUP" });
+  };
+
+  // logout
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: "LOGOUT" });
   };
 
   return (
@@ -130,6 +135,7 @@ export const AppProvider = ({ children }) => {
         addUser,
         login,
         toggleProfilePopup,
+        logout,
       }}
     >
       {children}

@@ -2,7 +2,11 @@ import React from "react";
 
 import { GiExitDoor } from "react-icons/gi";
 
+import { useGlobalContext } from "../../../context";
+
 const PopUp = () => {
+  const { logout } = useGlobalContext();
+
   return (
     <>
       <section className="flex flex-col justify-evenly px-[10px] absolute top-[5.1rem] right-[1rem] w-[200px] h-[150px] bg-[#f5f5f5] rounded shadow-md shadow-indigo-500/40">
@@ -12,7 +16,10 @@ const PopUp = () => {
           </div>
           <div className="role text-[#7a7a7a]">super admin</div>
         </div>
-        <div className="logout flex gap-[10px] cursor-pointer rounded py-[5px] px-[5px] hover:bg-[#fff]">
+        <div
+          onClick={() => logout()}
+          className="logout flex gap-[10px] cursor-pointer rounded py-[5px] px-[5px] hover:bg-[#fff]"
+        >
           <GiExitDoor size={25} color="#b17a15" />
           <span className="font-bold text-[#666]">Logout</span>
         </div>
