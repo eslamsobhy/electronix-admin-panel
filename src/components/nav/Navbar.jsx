@@ -2,7 +2,11 @@ import React from "react";
 
 import { HiMenu } from "react-icons/hi";
 
+import { useGlobalContext } from "../../../context";
+
 const Navbar = ({ isNavOpen, navHandler }) => {
+  const { toggleProfilePopup } = useGlobalContext();
+
   return (
     <>
       <nav className="navbar flex justify-between items-center h-[5rem] w-[100%] shadow-sm shadow-indigo-500/40 py-[1rem] px-[2rem]">
@@ -13,7 +17,8 @@ const Navbar = ({ isNavOpen, navHandler }) => {
           <HiMenu size={40} color="#b17a15" />
         </div>
         <img
-          className="w-[50px] rounded-[50%]"
+          onClick={() => toggleProfilePopup()}
+          className="w-[50px] rounded-[50%] cursor-pointer"
           src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
           alt="name"
         />

@@ -79,6 +79,9 @@ const reducer = (state, action) => {
       return { ...state, users: newUs };
     case "LOGIN":
       return { ...state, loggedIn: true, loggedInUser: action.payload };
+    case "PROFILE_POPUP":
+      const toggle = state.profilePopup;
+      return { ...state, profilePopup: !toggle };
     default:
       return state;
   }

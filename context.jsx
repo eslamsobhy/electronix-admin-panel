@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 // Define the initial state
 const initialState = {
+  profilePopup: false,
   loggedInUser: {},
   toBeDeletedItem: "",
   module: "",
@@ -109,6 +110,12 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "LOGIN", payload: loggedInUser });
   };
 
+  // toggle profile pop up
+  const toggleProfilePopup = () => {
+    console.log("from pop up");
+    dispatch({ type: "PROFILE_POPUP" });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -122,6 +129,7 @@ export const AppProvider = ({ children }) => {
         updateUser,
         addUser,
         login,
+        toggleProfilePopup,
       }}
     >
       {children}
