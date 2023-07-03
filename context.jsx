@@ -91,14 +91,15 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "LOGIN" });
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   return (
     <AppContext.Provider
       value={{
         ...state,
+        fetchData,
         deleteItem,
         cancelDeletion,
         deletionConfirm,
