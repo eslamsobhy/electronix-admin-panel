@@ -77,6 +77,8 @@ const reducer = (state, action) => {
     case "ADD_USER":
       const newUs = [...state.users, action.payload];
       return { ...state, users: newUs };
+    case "LOGIN":
+      return { ...state, loggedIn: true };
     default:
       return state;
   }

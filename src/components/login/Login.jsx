@@ -3,7 +3,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+import { useGlobalContext } from "../../../context";
+
 const Login = () => {
+  const { login } = useGlobalContext();
+
   const {
     register,
     handleSubmit,
@@ -19,10 +23,11 @@ const Login = () => {
         { email, password }
       );
       console.log(response);
+      login();
       localStorage.setItem("token", response.data.token);
-      toast("Logged in successfully!");
+      toast.success("Logged in successfully!");
     } catch (e) {
-      console.log(e.response.data.message);
+      console.log(e.response?.data.message);
     }
   };
 

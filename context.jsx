@@ -8,7 +8,7 @@ const initialState = {
   module: "",
   confirmDeletion: false,
   loading: true,
-  loggedIn: true,
+  loggedIn: false,
   products: [],
   categories: [],
   users: [],
@@ -86,6 +86,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "ADD_USER", payload: user });
   };
 
+  // login
+  const login = () => {
+    dispatch({ type: "LOGIN" });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -101,6 +106,7 @@ export const AppProvider = ({ children }) => {
         createCategory,
         updateUser,
         addUser,
+        login,
       }}
     >
       {children}

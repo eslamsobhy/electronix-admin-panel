@@ -39,7 +39,7 @@ function App() {
     };
   }, []);
 
-  if (loggedIn) {
+  if (!loggedIn && !localStorage.getItem("token")) {
     return <Login />;
   }
 
