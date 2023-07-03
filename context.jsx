@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect, useContext } from "react";
 import axios from "axios";
 import reducer from "./reducer";
+import { toast } from "react-toastify";
 
 // Define the initial state
 const initialState = {
@@ -56,16 +57,19 @@ export const AppProvider = ({ children }) => {
       case "category":
         axios.delete(`http://localhost:8000/categories/${id}`);
         dispatch({ type: "DELETE_CATEGORY", payload: id });
+        toast.success("Category deleted successfully!");
         break;
       case "user":
         axios.delete(`http://localhost:8000/users/${id}`, {
           headers: { Authorization: localStorage.getItem("token") },
         });
         dispatch({ type: "DELETE_USER", payload: id });
+        toast.success("User deleted successfully!");
         break;
       case "product":
         axios.delete(`http://localhost:8000/products/${id}`);
         dispatch({ type: "DELETE_PRODUCT", payload: id });
+        toast.success("Product deleted successfully!");
         break;
       default:
         break;
@@ -96,10 +100,6 @@ export const AppProvider = ({ children }) => {
   const login = () => {
     dispatch({ type: "LOGIN" });
   };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   return (
     <AppContext.Provider

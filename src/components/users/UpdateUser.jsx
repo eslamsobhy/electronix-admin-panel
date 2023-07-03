@@ -39,7 +39,7 @@ const UpdateUser = () => {
 
     updateUser(response.data);
 
-    toast("User updated successfully!");
+    toast.success("User updated successfully!");
   };
 
   useEffect(() => {

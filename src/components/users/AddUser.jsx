@@ -29,7 +29,7 @@ const AddUser = () => {
 
     addUser(response.data.newUser);
 
-    toast("User created successfully!");
+    toast.success("User created successfully!");
     reset();
   };
 

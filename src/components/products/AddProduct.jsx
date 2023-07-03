@@ -28,7 +28,7 @@ const AddProduct = () => {
     formData.append("brand", brand);
 
     await axios.post("http://localhost:8000/products", formData);
-    toast("Product created successfully!");
+    toast.success("Product created successfully!");
     reset();
   };
 

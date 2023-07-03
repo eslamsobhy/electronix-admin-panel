@@ -30,7 +30,7 @@ const CategoryForm = () => {
 
     // console.log(response.data);
     createCategory(response.data.createdCategory);
-    toast("Category added successfully!");
+    toast.success("Category added successfully!");
     reset();
   };
 

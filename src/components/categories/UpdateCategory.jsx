@@ -31,9 +31,8 @@ const UpdateCategory = () => {
       }
     );
 
-    // console.log(response.data.updatedCategory);
     updateCategory(response.data.updatedCategory);
-    toast("Category updated successfully!");
+    toast.success("Category updated successfully!");
   };
 
   useEffect(() => {
