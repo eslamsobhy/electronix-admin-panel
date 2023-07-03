@@ -82,7 +82,6 @@ const ShowUsers = () => {
                         </Link>
                         <button
                           onClick={() => deleteItem(_id, "user")}
-                          href="#"
                           className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                         >
                           Delete

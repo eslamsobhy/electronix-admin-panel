@@ -58,7 +58,9 @@ export const AppProvider = ({ children }) => {
         dispatch({ type: "DELETE_CATEGORY", payload: id });
         break;
       case "user":
-        axios.delete(`http://localhost:8000/users/${id}`);
+        axios.delete(`http://localhost:8000/users/${id}`, {
+          headers: { Authorization: localStorage.getItem("token") },
+        });
         dispatch({ type: "DELETE_USER", payload: id });
         break;
       case "product":

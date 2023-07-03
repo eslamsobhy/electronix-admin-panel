@@ -25,13 +25,17 @@ const UpdateUser = () => {
   // when submitting the form
   const onSubmit = async (data) => {
     const { first_name, last_name, role, email, phone_number } = data;
-    const response = await axios.patch(`http://localhost:8000/users/${id}`, {
-      first_name,
-      last_name,
-      role,
-      email,
-      phone_number,
-    });
+    const response = await axios.patch(
+      `http://localhost:8000/users/${id}`,
+      {
+        first_name,
+        last_name,
+        role,
+        email,
+        phone_number,
+      },
+      { headers: { Authorization: localStorage.getItem("token") } }
+    );
 
     updateUser(response.data);
 
