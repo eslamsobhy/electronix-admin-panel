@@ -52,7 +52,7 @@ const RepeatedBlock = () => {
 
 const AddProduct = () => {
   const [blocks, setBlocks] = useState([<RepeatedBlock key={0} />]);
-  const { categories } = useGlobalContext();
+  const { categories, addProduct } = useGlobalContext();
 
   const {
     register,
@@ -77,7 +77,11 @@ const AddProduct = () => {
       formData.append("images", img);
     });
 
-    await axios.post("http://localhost:8000/products", formData);
+    const response = await axios.post(
+      "http://localhost:8000/products",
+      formData
+    );
+    addProduct(response.data.createdProduct);
     toast.success("Product created successfully!");
     reset();
   };
