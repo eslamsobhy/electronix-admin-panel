@@ -174,38 +174,40 @@ const AddProduct = () => {
             <div className="w-full text-amber-700 text-md sm:text-2xl">
               Product Details:
             </div>
-            <div className="form-group flex gap-3 items-center">
-              <div className="name-container">
-                <label
-                  htmlFor="detail-name"
-                  className="block text-xs font-medium text-gray-700"
-                >
-                  Name
-                </label>
+            <div className="form-group flex flex-wrap gap-3 items-center">
+              <div className="key-value-pair w-full flex gap-3">
+                <div className="name-container">
+                  <label
+                    htmlFor="detail-name"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Name
+                  </label>
 
-                <input
-                  {...register("key")}
-                  type="text"
-                  id="detail-name"
-                  placeholder="key name"
-                  className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
-                />
-              </div>
-              <div className="value-container">
-                <label
-                  htmlFor="detail-value"
-                  className="block text-xs font-medium text-gray-700"
-                >
-                  Value
-                </label>
+                  <input
+                    {...register("key")}
+                    type="text"
+                    id="detail-name"
+                    placeholder="key name"
+                    className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+                  />
+                </div>
+                <div className="value-container">
+                  <label
+                    htmlFor="detail-value"
+                    className="block text-xs font-medium text-gray-700"
+                  >
+                    Value
+                  </label>
 
-                <input
-                  {...register("value")}
-                  type="text"
-                  id="detail-value"
-                  placeholder="value"
-                  className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
-                />
+                  <input
+                    {...register("value")}
+                    type="text"
+                    id="detail-value"
+                    placeholder="value"
+                    className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+                  />
+                </div>
               </div>
               <button
                 type="button"
