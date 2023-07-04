@@ -12,12 +12,12 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { error },
-    reset
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
-    const { name, price, brand, category_name, images } = data;
+    console.log(data);
+    const { name, price, brand, category_name, images, stock_count } = data;
     const details = { screen_size: "123", owner: "John" };
     const formData = new FormData();
     formData.append("name", name);
@@ -25,6 +25,7 @@ const AddProduct = () => {
     formData.append("category_name", category_name);
     formData.append("details", JSON.stringify(details));
     formData.append("brand", brand);
+    formData.append("stock_count", stock_count);
 
     [...images].forEach((img) => {
       formData.append("images", img);
@@ -54,6 +55,7 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Name
+                {/* <span className="text-[red]"> *</span> */}
               </label>
 
               <input
@@ -66,17 +68,17 @@ const AddProduct = () => {
             </div>
             <div className="form-group">
               <label
-                htmlFor="details"
+                htmlFor="stock_count"
                 className="block text-xs font-medium text-gray-700"
               >
-                Details
+                Stock Count
               </label>
 
               <input
-                {...register("details")}
+                {...register("stock_count")}
                 type="text"
-                id="details"
-                placeholder="This phone has a front camera with blah blah blah"
+                id="stock_count"
+                placeholder="Number"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
@@ -157,6 +159,50 @@ const AddProduct = () => {
                 id="images"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+            </div>
+            <div className="w-full h-[1px] bg-[#eee]"></div>
+            <div className="w-full text-amber-700 text-md sm:text-2xl">
+              Product Details:
+            </div>
+            <div className="form-group flex gap-3 items-center">
+              <div className="name-container">
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-medium text-gray-700"
+                >
+                  Name
+                </label>
+
+                <input
+                  {...register("key")}
+                  type="text"
+                  id="name"
+                  placeholder="key name"
+                  className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+                />
+              </div>
+              <div className="value-container">
+                <label
+                  htmlFor="value"
+                  className="block text-xs font-medium text-gray-700"
+                >
+                  Value
+                </label>
+
+                <input
+                  {...register("value")}
+                  type="text"
+                  id="value"
+                  placeholder="value"
+                  className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+                />
+              </div>
+              <button
+                type="button"
+                className="inline-block mt-[18px] h-[38px] px-4 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
+              >
+                Add Detail
+              </button>
             </div>
           </article>
           <div className="my-[30px]">
