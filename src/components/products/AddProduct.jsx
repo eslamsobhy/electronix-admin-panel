@@ -16,9 +16,9 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     const { name, price, brand, category_name, images, stock_count } = data;
-    const details = { screen_size: "123", owner: "John" };
+
+    const details = gatherDetails();
     const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
@@ -34,6 +34,16 @@ const AddProduct = () => {
     await axios.post("http://localhost:8000/products", formData);
     toast.success("Product created successfully!");
     reset();
+  };
+
+  const gatherDetails = () => {
+    const details = {};
+    const keys = document.querySelectorAll("#detail-name");
+    const values = document.querySelectorAll("#detail-value");
+    for (let i = 0; i < keys.length; i++) {
+      details[keys[i].value] = values[i].value;
+    }
+    return details;
   };
 
   return (
@@ -167,7 +177,7 @@ const AddProduct = () => {
             <div className="form-group flex gap-3 items-center">
               <div className="name-container">
                 <label
-                  htmlFor="name"
+                  htmlFor="detail-name"
                   className="block text-xs font-medium text-gray-700"
                 >
                   Name
@@ -176,14 +186,14 @@ const AddProduct = () => {
                 <input
                   {...register("key")}
                   type="text"
-                  id="name"
+                  id="detail-name"
                   placeholder="key name"
                   className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
                 />
               </div>
               <div className="value-container">
                 <label
-                  htmlFor="value"
+                  htmlFor="detail-value"
                   className="block text-xs font-medium text-gray-700"
                 >
                   Value
@@ -192,7 +202,7 @@ const AddProduct = () => {
                 <input
                   {...register("value")}
                   type="text"
-                  id="value"
+                  id="detail-value"
                   placeholder="value"
                   className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
                 />
