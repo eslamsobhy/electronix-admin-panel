@@ -87,7 +87,9 @@ const AddProduct = () => {
     const keys = document.querySelectorAll("#detail-name");
     const values = document.querySelectorAll("#detail-value");
     for (let i = 0; i < keys.length; i++) {
-      details[keys[i].value] = values[i].value;
+      if (keys[i].value && values[i].value) {
+        details[keys[i].value] = values[i].value;
+      }
     }
     return details;
   };
