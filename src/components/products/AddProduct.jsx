@@ -1,11 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 import { useGlobalContext } from "../../../context";
 
+const RepeatedBlock = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { error },
+    reset,
+  } = useForm();
+  return (
+    <div className="key-value-pair w-full flex gap-3">
+      <div className="name-container">
+        <label
+          htmlFor="detail-name"
+          className="block text-xs font-medium text-gray-700"
+        >
+          Name
+        </label>
+
+        <input
+          {...register("key")}
+          type="text"
+          id="detail-name"
+          placeholder="key name"
+          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+        />
+      </div>
+      <div className="value-container">
+        <label
+          htmlFor="detail-value"
+          className="block text-xs font-medium text-gray-700"
+        >
+          Value
+        </label>
+
+        <input
+          {...register("value")}
+          type="text"
+          id="detail-value"
+          placeholder="value"
+          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+        />
+      </div>
+    </div>
+  );
+};
+
 const AddProduct = () => {
+  const [blocks, setBlocks] = useState([<RepeatedBlock key={0} />]);
   const { categories } = useGlobalContext();
 
   const {
@@ -44,6 +90,13 @@ const AddProduct = () => {
       details[keys[i].value] = values[i].value;
     }
     return details;
+  };
+
+  const handleRepeat = () => {
+    setBlocks((prevBlocks) => [
+      ...prevBlocks,
+      <RepeatedBlock key={prevBlocks.length} />,
+    ]);
   };
 
   return (
@@ -175,41 +228,9 @@ const AddProduct = () => {
               Product Details:
             </div>
             <div className="form-group flex flex-wrap gap-3 items-center">
-              <div className="key-value-pair w-full flex gap-3">
-                <div className="name-container">
-                  <label
-                    htmlFor="detail-name"
-                    className="block text-xs font-medium text-gray-700"
-                  >
-                    Name
-                  </label>
-
-                  <input
-                    {...register("key")}
-                    type="text"
-                    id="detail-name"
-                    placeholder="key name"
-                    className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
-                  />
-                </div>
-                <div className="value-container">
-                  <label
-                    htmlFor="detail-value"
-                    className="block text-xs font-medium text-gray-700"
-                  >
-                    Value
-                  </label>
-
-                  <input
-                    {...register("value")}
-                    type="text"
-                    id="detail-value"
-                    placeholder="value"
-                    className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
-                  />
-                </div>
-              </div>
+              {blocks}
               <button
+                onClick={() => handleRepeat()}
                 type="button"
                 className="inline-block mt-[18px] h-[38px] px-4 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
               >
