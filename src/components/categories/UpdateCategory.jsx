@@ -16,19 +16,22 @@ const UpdateCategory = () => {
     register,
     handleSubmit,
     formState: { error },
-    setValue,
+    setValue
   } = useForm();
 
   const onSubmit = async (data) => {
     const { category_name, image, description } = data;
+    console.log(data);
+
+    const formData = new FormData();
+
+    formData.append("category_name", category_name);
+    formData.append("image", image[0]);
+    formData.append("description", description);
 
     const response = await axios.patch(
       `http://localhost:8000/categories/${id}`,
-      {
-        category_name,
-        image,
-        description,
-      }
+      formData
     );
 
     updateCategory(response.data.updatedCategory);
