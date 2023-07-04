@@ -3,13 +3,11 @@ import React from "react";
 import { navLinks } from "../sidenav/navData";
 import Card from "./Card";
 import Loading from "../loading/Loading";
-import PopUp from "../profile/PopUp";
 
 import { useGlobalContext } from "../../../context";
 
 const MainContainer = () => {
-  const { products, categories, users, loading, profilePopup } =
-    useGlobalContext();
+  const { products, categories, users, loading } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
@@ -17,7 +15,6 @@ const MainContainer = () => {
 
   return (
     <>
-      {profilePopup && <PopUp />}
       <h1 className="mt-[1rem] ml-[2rem] font-bold text-[25px] text-[#b17a15]">
         Electro Dashboard
       </h1>

@@ -19,11 +19,12 @@ import AddUser from "./components/users/AddUser";
 import AddProduct from "./components/products/AddProduct";
 import UpdateUser from "./components/users/UpdateUser";
 import Login from "./components/login/Login";
+import PopUp from "./components/profile/PopUp";
 
 import { useGlobalContext } from "../context";
 
 function App() {
-  const { loggedIn, fetchData, login } = useGlobalContext();
+  const { loggedIn, fetchData, login, profilePopup } = useGlobalContext();
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -65,6 +66,7 @@ function App() {
           }`}
         >
           <Navbar isNavOpen={isNavOpen} navHandler={navHandler} />
+          {profilePopup && <PopUp />}
           <Routes>
             <Route path="/" element={<MainContainer />} />
             <Route path="/users" element={<ShowUsers />} />
