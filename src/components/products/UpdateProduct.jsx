@@ -84,6 +84,14 @@ const UpdateProduct = () => {
     // setValue("category", product?.phone_number);
   }, []);
 
+  // add another detail
+  const handleRepeat = () => {
+    setBlocks((prevBlocks) => [
+      ...prevBlocks,
+      <RepeatedBlock key={prevBlocks.length} />,
+    ]);
+  };
+
   return (
     <section className="w-[100%] flex justify-center items-center mt-[30px]">
       <article className="w-[80%]">
@@ -219,7 +227,7 @@ const UpdateProduct = () => {
             <div className="form-group flex flex-wrap gap-3 items-center">
               {blocks}
               <button
-                onClick={() => {}}
+                onClick={() => handleRepeat()}
                 type="button"
                 className="inline-block mt-[18px] h-[38px] px-4 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm"
               >
