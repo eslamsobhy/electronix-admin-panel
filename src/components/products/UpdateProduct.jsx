@@ -80,7 +80,47 @@ const UpdateProduct = () => {
 
   // when submitting the form
   const onSubmit = async (data) => {
-    console.log(data);
+    const {
+      name,
+      price,
+      new_price,
+      brand,
+      category_name,
+      images,
+      stock_count,
+    } = data;
+
+    const details = gatherDetails();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("new_price", new_price);
+    formData.append("category_name", category_name);
+    formData.append("details", JSON.stringify(details));
+    formData.append("brand", brand);
+    formData.append("stock_count", stock_count);
+
+    [...images].forEach((img) => {
+      formData.append("images", img);
+    });
+
+    const response = await axios.put(
+      `http://localhost:8000/products/${id}`,
+      formData
+    );
+    toast.success("Product created successfully!");
+  };
+
+  const gatherDetails = () => {
+    const details = {};
+    const keys = document.querySelectorAll("#detail-name");
+    const values = document.querySelectorAll("#detail-value");
+    for (let i = 0; i < keys.length; i++) {
+      if (keys[i].value && values[i].value) {
+        details[keys[i].value] = values[i].value;
+      }
+    }
+    return details;
   };
 
   // initialize the form with the product data
