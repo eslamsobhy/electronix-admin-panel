@@ -10,9 +10,17 @@ const RepeatedBlock = (props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { error },
     reset,
   } = useForm();
+
+  useEffect(() => {
+    if (props.detailKey && props.detailValue) {
+      setValue("key", props.detailKey);
+      setValue("value", props.detailValue);
+    }
+  }, []);
   return (
     <div className="key-value-pair w-full flex gap-3">
       <div className="name-container">
@@ -25,7 +33,6 @@ const RepeatedBlock = (props) => {
 
         <input
           {...register("key")}
-          value={props.detailKey ? props.detailKey : ""}
           type="text"
           id="detail-name"
           placeholder="key name"
@@ -42,7 +49,6 @@ const RepeatedBlock = (props) => {
 
         <input
           {...register("value")}
-          value={props.detailValue ? props.detailValue : ""}
           type="text"
           id="detail-value"
           placeholder="value"
