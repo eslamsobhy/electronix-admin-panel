@@ -62,7 +62,7 @@ const UpdateProduct = () => {
   // product being updated
   const { id } = useParams();
   const product = products.find((product) => product._id == id);
-  console.log(product);
+  //   console.log(product);
 
   // react hook from apis
   const {
@@ -81,9 +81,8 @@ const UpdateProduct = () => {
   useEffect(() => {
     setValue("name", product?.name);
     setValue("price", product?.price);
-    // setValue("details", product?.email);
+    setValue("new_price", product?.new_price);
     setValue("stock_count", product?.stock_count);
-    // setValue("category", product?.phone_number);
   }, []);
 
   // add another detail
@@ -152,6 +151,22 @@ const UpdateProduct = () => {
                 {...register("price")}
                 type="text"
                 id="price"
+                placeholder="123.22 EGP"
+                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+              />
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="new_price"
+                className="block text-xs font-medium text-gray-700"
+              >
+                New Price
+              </label>
+
+              <input
+                {...register("new_price")}
+                type="text"
+                id="new_price"
                 placeholder="123.22 EGP"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
