@@ -5,6 +5,7 @@ import { useGlobalContext } from "../../../context";
 import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
 import NoData from "../no-data/NoData";
+import PaginatedUsers from "./PaginatedUsers";
 
 const ShowUsers = () => {
   const { users, loading, confirmDeletion, deleteItem } = useGlobalContext();
@@ -46,7 +47,7 @@ const ShowUsers = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {users.map(
+                {/* {users.map(
                   ({
                     _id,
                     first_name,
@@ -89,7 +90,11 @@ const ShowUsers = () => {
                       </td>
                     </tr>
                   )
-                )}
+                )} */}
+                <PaginatedUsers users={users} deleteItem={deleteItem} />
+
+
+
               </tbody>
             </table>
           </div>

@@ -5,6 +5,7 @@ import { useGlobalContext } from "../../../context";
 import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
 import NoData from "../no-data/NoData";
+import PaginatedProducts from "./PaginatedProducts";
 
 const ShowProducts = () => {
   const { products, categories, loading, confirmDeletion, deleteItem } =
@@ -47,7 +48,7 @@ const ShowProducts = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {products.map(({ _id, name, price, category_id, brand }) => {
+                {/* {products.map(({ _id, name, price, category_id, brand }) => {
                   const category = categories.find(
                     (cat) => cat._id == category_id
                   );
@@ -76,7 +77,8 @@ const ShowProducts = () => {
                       </td>
                     </tr>
                   );
-                })}
+                })} */}
+                <PaginatedProducts products={products} categories={categories} deleteItem={deleteItem} />
               </tbody>
             </table>
           </div>

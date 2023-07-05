@@ -46,7 +46,7 @@ const ShowCategories = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {categories.map(
+                {/* {categories.map(
                   ({ _id, category_name, image, description }) => (
                     <tr key={_id}>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -74,7 +74,8 @@ const ShowCategories = () => {
                       </td>
                     </tr>
                   )
-                )}
+                )} */}
+                <PaginatedCategories categories={categories} deleteItem={deleteItem} />
               </tbody>
             </table>
           </div>
