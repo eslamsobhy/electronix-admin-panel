@@ -18,6 +18,7 @@ import UpdateCategory from "./components/categories/UpdateCategory";
 import AddUser from "./components/users/AddUser";
 import AddProduct from "./components/products/AddProduct";
 import UpdateUser from "./components/users/UpdateUser";
+import UpdateProduct from "./components/products/UpdateProduct";
 import Login from "./components/login/Login";
 import PopUp from "./components/profile/PopUp";
 
@@ -77,6 +78,7 @@ function App() {
             <Route path="/add-user" element={<AddUser />} />
             <Route path="/edit-user/:id" element={<UpdateUser />} />
             <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/edit-product/:id" element={<UpdateProduct />} />
           </Routes>
         </div>
         <ToastContainer />

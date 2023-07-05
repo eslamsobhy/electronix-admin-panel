@@ -60,15 +60,14 @@ const ShowProducts = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">{brand}</td>
                       <td className="text-right px-6 whitespace-nowrap">
-                        <a
-                          href="#"
+                        <Link
+                          to={`/edit-product/${_id}`}
                           className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                         >
                           Edit
-                        </a>
+                        </Link>
                         <button
                           onClick={() => deleteItem(_id, "product")}
-                          href="#"
                           className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                         >
                           Delete
