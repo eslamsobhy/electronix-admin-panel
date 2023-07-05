@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 import { useGlobalContext } from "../../../context";
 
-const RepeatedBlock = () => {
+const RepeatedBlock = (props) => {
   const {
     register,
     handleSubmit,
@@ -25,6 +25,7 @@ const RepeatedBlock = () => {
 
         <input
           {...register("key")}
+          value={props.detailKey ? props.detailKey : ""}
           type="text"
           id="detail-name"
           placeholder="key name"
@@ -41,6 +42,7 @@ const RepeatedBlock = () => {
 
         <input
           {...register("value")}
+          value={props.detailValue ? props.detailValue : ""}
           type="text"
           id="detail-value"
           placeholder="value"
@@ -52,7 +54,7 @@ const RepeatedBlock = () => {
 };
 
 const UpdateProduct = () => {
-  const [blocks, setBlocks] = useState([<RepeatedBlock key={0} />]);
+  const [blocks, setBlocks] = useState([]);
 
   // products stored in the global context (coming from db)
   const { products, categories } = useGlobalContext();
@@ -225,6 +227,13 @@ const UpdateProduct = () => {
               Product Details:
             </div>
             <div className="form-group flex flex-wrap gap-3 items-center">
+              {Object.entries(product.details).map(([key, value], index) => (
+                <RepeatedBlock
+                  key={index}
+                  detailKey={key}
+                  detailValue={value}
+                />
+              ))}
               {blocks}
               <button
                 onClick={() => handleRepeat()}
