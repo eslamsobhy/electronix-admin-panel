@@ -108,6 +108,8 @@ const UpdateProduct = () => {
       `http://localhost:8000/products/${id}`,
       formData
     );
+
+    UpdateProduct(response.data.updatedProduct);
     toast.success("Product created successfully!");
   };
 

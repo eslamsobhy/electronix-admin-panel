@@ -87,6 +87,14 @@ const reducer = (state, action) => {
     case "ADD_PRODUCT":
       const newProds = [...state.products, action.payload];
       return { ...state, products: newProds };
+    case "UPDATE_PRODUCT":
+      const prods = state.products.map((prod) => {
+        if (prod._id == action.payload.id) {
+          return action.payload;
+        }
+        return prod;
+      });
+      return { ...state, products: prods };
     default:
       return state;
   }

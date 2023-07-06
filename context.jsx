@@ -105,6 +105,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "ADD_USER", payload: user });
   };
 
+  // update product
+  const updateProduct = (product) => {
+    dispatch({ type: "UPDATE_PRODUCT", payload: product });
+  };
+
   // add product
   const addProduct = (product) => {
     dispatch({ type: "ADD_PRODUCT", payload: product });
@@ -138,6 +143,7 @@ export const AppProvider = ({ children }) => {
         createCategory,
         updateUser,
         addUser,
+        updateProduct,
         addProduct,
         login,
         toggleProfilePopup,
