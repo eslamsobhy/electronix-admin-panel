@@ -127,6 +127,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "ADD_PRODUCT", payload: product });
   };
 
+  // update brand
+  const updateBrand = (brand) => {
+    dispatch({ type: "UPDATE_BRAND", payload: brand });
+  };
+
   // login
   const login = (loggedInUser) => {
     dispatch({ type: "LOGIN", payload: loggedInUser });
@@ -163,6 +168,7 @@ export const AppProvider = ({ children }) => {
         updateProduct,
         addProduct,
         createBrand,
+        updateBrand,
         login,
         toggleProfilePopup,
         logout,

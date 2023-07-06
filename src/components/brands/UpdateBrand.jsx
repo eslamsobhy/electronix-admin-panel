@@ -6,11 +6,11 @@ import { toast } from "react-toastify";
 
 import { useGlobalContext } from "../../../context";
 
-const UpdateCategory = () => {
-  const { categories, updateCategory } = useGlobalContext();
+const UpdateBrand = () => {
+  const { brands, updateBrand } = useGlobalContext();
   const { id } = useParams();
 
-  const category = categories.find((cat) => cat._id == id);
+  const brand = brands.find((br) => br._id == id);
 
   const {
     register,
@@ -20,35 +20,33 @@ const UpdateCategory = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { category_name, image, description } = data;
+    const { brand_name, image } = data;
     // console.log(data);
 
     const formData = new FormData();
 
-    formData.append("category_name", category_name);
+    formData.append("brand_name", brand_name);
     formData.append("image", image[0]);
-    formData.append("description", description);
 
     const response = await axios.patch(
-      `http://localhost:8000/categories/${id}`,
+      `http://localhost:8000/brands/${id}`,
       formData
     );
 
-    updateCategory(response.data.updatedCategory);
-    toast.success("Category updated successfully!");
+    updateBrand(response.data.updatedCategory);
+    toast.success("Brand updated successfully!");
   };
 
   useEffect(() => {
-    setValue("category_name", category?.category_name);
-    setValue("description", category?.description);
-  }, [category, setValue]);
+    setValue("brand_name", brand?.brand_name);
+  }, [brand, setValue]);
 
   return (
     <section className="w-[100%] flex justify-center items-center mt-[30px]">
       <article className="w-[80%]">
         <div className="max-w-lg">
           <h3 className="text-amber-700 text-xl font-bold sm:text-2xl">
-            Update category
+            Update brand
           </h3>
         </div>
         <form
@@ -58,33 +56,17 @@ const UpdateCategory = () => {
           <article className="inputs flex flex-wrap gap-[4rem]">
             <div className="form-group">
               <label
-                htmlFor="catName"
+                htmlFor="brand_name"
                 className="block text-xs font-medium text-gray-700"
               >
-                Category Name
+                Brand Name
               </label>
 
               <input
-                {...register("category_name")}
+                {...register("brand_name")}
                 type="text"
-                id="catName"
-                placeholder="Laptops"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
-              />
-            </div>
-            <div className="form-group">
-              <label
-                htmlFor="description"
-                className="block text-xs font-medium text-gray-700"
-              >
-                Description
-              </label>
-
-              <input
-                {...register("description")}
-                type="text"
-                id="description"
-                placeholder="description for laptops"
+                id="brandName"
+                placeholder="Apple"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
@@ -106,7 +88,7 @@ const UpdateCategory = () => {
           </article>
           <div className="mt-3 md:mt-0">
             <button className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm">
-              Save category
+              Save brand
             </button>
           </div>
         </form>
@@ -115,4 +97,4 @@ const UpdateCategory = () => {
   );
 };
 
-export default UpdateCategory;
+export default UpdateBrand;
