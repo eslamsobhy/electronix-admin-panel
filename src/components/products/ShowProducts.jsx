@@ -7,7 +7,7 @@ import Loading from "../loading/Loading";
 import NoData from "../no-data/NoData";
 
 const ShowProducts = () => {
-  const { products, categories, loading, confirmDeletion, deleteItem } =
+  const { products, categories, brands, loading, confirmDeletion, deleteItem } =
     useGlobalContext();
 
   if (loading) {
@@ -47,10 +47,11 @@ const ShowProducts = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {products.map(({ _id, name, price, category_id, brand }) => {
+                {products.map(({ _id, name, price, category_id, brand_id }) => {
                   const category = categories.find(
-                    (cat) => cat._id == category_id
+                    (cat) => cat._id == category_id._id
                   );
+                  const brand = brands.find((br) => br._id == brand_id._id);
                   return (
                     <tr key={_id}>
                       <td className="px-6 py-4 whitespace-nowrap">{name}</td>
@@ -58,7 +59,9 @@ const ShowProducts = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         {category?.category_name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{brand}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {brand?.brand_name}
+                      </td>
                       <td className="text-right px-6 whitespace-nowrap">
                         <Link
                           to={`/edit-product/${_id}`}

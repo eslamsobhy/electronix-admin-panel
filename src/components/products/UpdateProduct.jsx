@@ -63,12 +63,11 @@ const UpdateProduct = () => {
   const [blocks, setBlocks] = useState([]);
 
   // products stored in the global context (coming from db)
-  const { products, categories } = useGlobalContext();
+  const { products, categories, brands, updateProduct } = useGlobalContext();
 
   // product being updated
   const { id } = useParams();
   const product = products.find((product) => product._id == id);
-  //   console.log(product);
 
   // react hook from apis
   const {
@@ -84,7 +83,7 @@ const UpdateProduct = () => {
       name,
       price,
       new_price,
-      brand,
+      brand_name,
       category_name,
       images,
       stock_count,
@@ -97,7 +96,7 @@ const UpdateProduct = () => {
     formData.append("new_price", new_price);
     formData.append("category_name", category_name);
     formData.append("details", JSON.stringify(details));
-    formData.append("brand", brand);
+    formData.append("brand_name", brand_name);
     formData.append("stock_count", stock_count);
 
     [...images].forEach((img) => {
@@ -109,7 +108,7 @@ const UpdateProduct = () => {
       formData
     );
 
-    UpdateProduct(response.data.updatedProduct);
+    updateProduct(response.data.updatedProduct);
     toast.success("Product created successfully!");
   };
 
@@ -221,25 +220,29 @@ const UpdateProduct = () => {
             </div>
             <div className="form-group">
               <label
-                htmlFor="brand"
+                htmlFor="brandName"
                 className="block text-xs font-medium text-gray-700"
               >
                 Brand
               </label>
 
               <select
-                {...register("brand")}
-                id="brand"
+                {...register("brand_name")}
+                id="brand_name"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
-                <option value="JM">John Mayer</option>
-                <option value="SRV">Stevie Ray Vaughn</option>
-                <option value="JH">Jimi Hendrix</option>
-                <option value="BBK">B.B King</option>
-                <option value="AK">Albert King</option>
-                <option value="BG">Buddy Guy</option>
-                <option value="EC">Eric Clapton</option>
+                {brands.map((brand) => {
+                  return (
+                    <option
+                      key={brand._id}
+                      value={brand.brand_name}
+                      selected={brand._id == product.brand_id._id}
+                    >
+                      {brand.brand_name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className="form-group">
@@ -261,7 +264,7 @@ const UpdateProduct = () => {
                     <option
                       key={category._id}
                       value={category.category_name}
-                      selected={category._id == product.category_id}
+                      selected={category._id == product.category_id._id}
                     >
                       {category.category_name}
                     </option>
@@ -290,7 +293,7 @@ const UpdateProduct = () => {
               Product Details:
             </div>
             <div className="form-group flex flex-wrap gap-3 items-center">
-              {Object.entries(product.details).map(([key, value], index) => (
+              {Object.entries(product?.details).map(([key, value], index) => (
                 <RepeatedBlock
                   key={index}
                   detailKey={key}
@@ -309,7 +312,7 @@ const UpdateProduct = () => {
           </article>
           <div className="my-[30px]">
             <button className="inline-block px-4 py-2 text-white duration-150 font-medium bg-amber-600 rounded-lg hover:bg-amber-700 active:bg-amber-700 md:text-sm">
-              Add Product
+              Save Product
             </button>
           </div>
         </form>

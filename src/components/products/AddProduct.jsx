@@ -52,7 +52,7 @@ const RepeatedBlock = () => {
 
 const AddProduct = () => {
   const [blocks, setBlocks] = useState([<RepeatedBlock key={0} />]);
-  const { categories, addProduct } = useGlobalContext();
+  const { categories, brands, addProduct } = useGlobalContext();
 
   const {
     register,
@@ -62,7 +62,8 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { name, price, brand, category_name, images, stock_count } = data;
+    const { name, price, brand_name, category_name, images, stock_count } =
+      data;
 
     const details = gatherDetails();
     const formData = new FormData();
@@ -70,7 +71,7 @@ const AddProduct = () => {
     formData.append("price", price);
     formData.append("category_name", category_name);
     formData.append("details", JSON.stringify(details));
-    formData.append("brand", brand);
+    formData.append("brand_name", brand_name);
     formData.append("stock_count", stock_count);
 
     [...images].forEach((img) => {
@@ -81,6 +82,8 @@ const AddProduct = () => {
       "http://localhost:8000/products",
       formData
     );
+
+    console.log(response.data.createdProduct);
     addProduct(response.data.createdProduct);
     toast.success("Product created successfully!");
     reset();
@@ -169,25 +172,25 @@ const AddProduct = () => {
             </div>
             <div className="form-group">
               <label
-                htmlFor="brand"
+                htmlFor="brandName"
                 className="block text-xs font-medium text-gray-700"
               >
                 Brand
               </label>
 
               <select
-                {...register("brand")}
-                id="brand"
+                {...register("brand_name")}
+                id="brandName"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
-                <option value="JM">John Mayer</option>
-                <option value="SRV">Stevie Ray Vaughn</option>
-                <option value="JH">Jimi Hendrix</option>
-                <option value="BBK">B.B King</option>
-                <option value="AK">Albert King</option>
-                <option value="BG">Buddy Guy</option>
-                <option value="EC">Eric Clapton</option>
+                {brands.map((brand) => {
+                  return (
+                    <option key={brand._id} value={brand.brand_name}>
+                      {brand.brand_name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className="form-group">
