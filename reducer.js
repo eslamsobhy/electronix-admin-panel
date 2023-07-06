@@ -48,6 +48,15 @@ const reducer = (state, action) => {
         module: "",
         toBeDeletedItem: "",
       };
+    case "DELETE_BRAND":
+      const newBrs = state.brands.filter((br) => br._id != action.payload);
+      return {
+        ...state,
+        brands: newBrs,
+        confirmDeletion: false,
+        module: "",
+        toBeDeletedItem: "",
+      };
     case "DELETE_USER":
       const newUsers = state.users.filter((user) => user._id != action.payload);
       return {

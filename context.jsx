@@ -87,6 +87,11 @@ export const AppProvider = ({ children }) => {
         dispatch({ type: "DELETE_PRODUCT", payload: id });
         toast.success("Product deleted successfully!");
         break;
+      case "brand":
+        axios.delete(`http://localhost:8000/brands/${id}`);
+        dispatch({ type: "DELETE_BRAND", payload: id });
+        toast.success("Brand deleted successfully!");
+        break;
       default:
         break;
     }
