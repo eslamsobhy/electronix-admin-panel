@@ -1,5 +1,11 @@
 import React from "react";
-import { HiUserGroup, HiHome, HiViewBoards, HiViewGrid } from "react-icons/hi";
+import {
+  HiUserGroup,
+  HiHome,
+  HiViewBoards,
+  HiViewGrid,
+  HiSparkles,
+} from "react-icons/hi";
 
 export const navLinks = [
   {
@@ -25,5 +31,11 @@ export const navLinks = [
     url: "/users",
     text: "Users",
     icon: HiUserGroup,
+  },
+  {
+    id: 5,
+    url: "/brands",
+    text: "Brands",
+    icon: HiSparkles,
   },
 ];

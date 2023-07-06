@@ -7,7 +7,7 @@ import Loading from "../loading/Loading";
 import { useGlobalContext } from "../../../context";
 
 const MainContainer = () => {
-  const { products, categories, users, loading } = useGlobalContext();
+  const { products, categories, brands, users, loading } = useGlobalContext();
 
   if (loading) {
     return <Loading />;
@@ -27,6 +27,8 @@ const MainContainer = () => {
             return <Card key={link.id} comp={users} link={link} />;
           else if (link.text == "Categories")
             return <Card key={link.id} comp={categories} link={link} />;
+          else if (link.text == "Brands")
+            return <Card key={link.id} comp={brands} link={link} />;
         })}
       </div>
     </>
