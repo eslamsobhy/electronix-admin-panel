@@ -109,7 +109,7 @@ const reducer = (state, action) => {
     case "ADD_BRAND":
       const newBrands = [...state.brands, action.payload];
       return { ...state, brands: newBrands };
-    case "UpdateBrand":
+    case "UPDATE_BRAND":
       const brs = state.brands.map((brand) => {
         if (brand._id == action.payload.id) {
           return action.payload;

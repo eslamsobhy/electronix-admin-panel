@@ -35,7 +35,7 @@ const UpdateBrand = () => {
       formData
     );
 
-    updateBrand(response.data.updatedCategory);
+    updateBrand(response.data.updatedBrand);
     toast.success("Brand updated successfully!");
   };
 
