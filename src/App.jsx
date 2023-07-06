@@ -19,6 +19,7 @@ import AddUser from "./components/users/AddUser";
 import AddProduct from "./components/products/AddProduct";
 import UpdateUser from "./components/users/UpdateUser";
 import UpdateProduct from "./components/products/UpdateProduct";
+import ShowBrands from "./components/brands/ShowBrands";
 import Login from "./components/login/Login";
 import PopUp from "./components/profile/PopUp";
 
@@ -73,6 +74,7 @@ function App() {
             <Route path="/users" element={<ShowUsers />} />
             <Route path="/products" element={<ShowProducts />} />
             <Route path="/categories" element={<ShowCategories />} />
+            <Route path="/brands" element={<ShowBrands />} />
             <Route path="/add-category" element={<CategoryForm />} />
             <Route path="/edit-category/:id" element={<UpdateCategory />} />
             <Route path="/add-user" element={<AddUser />} />
