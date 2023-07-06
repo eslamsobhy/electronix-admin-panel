@@ -20,7 +20,9 @@ const CategoryForm = () => {
 
     const formData = new FormData();
     formData.append("category_name", category_name);
-    formData.append("image", image[0]);
+    if (image[0]) {
+      formData.append("image", image[0]);
+    }
     formData.append("description", description);
 
     const response = await axios.post(

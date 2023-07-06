@@ -20,7 +20,9 @@ const AddBrand = () => {
 
     const formData = new FormData();
     formData.append("brand_name", brand_name);
-    formData.append("image", image[0]);
+    if (image[0]) {
+      formData.append("image", image[0]);
+    }
 
     const response = await axios.post("http://localhost:8000/brands", formData);
 
