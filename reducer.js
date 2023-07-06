@@ -6,6 +6,8 @@ const reducer = (state, action) => {
       return { ...state, categories: action.payload };
     case "SET_USERS":
       return { ...state, users: action.payload };
+    case "SET_BRANDS":
+      return { ...state, brands: action.payload };
     case "LOADING":
       return { ...state, loading: true };
     case "DISPLAY_DATA":

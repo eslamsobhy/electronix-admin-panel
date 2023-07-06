@@ -14,6 +14,7 @@ const initialState = {
   loggedIn: false,
   products: [],
   categories: [],
+  brands: [],
   users: [],
 };
 
@@ -37,6 +38,12 @@ export const AppProvider = ({ children }) => {
       .get("http://localhost:8000/categories")
       .then((res) => {
         dispatch({ type: "SET_CATEGORIES", payload: res.data });
+      })
+      .catch((err) => console.log(err.message));
+    await axios
+      .get("http://localhost:8000/brands")
+      .then((res) => {
+        dispatch({ type: "SET_BRANDS", payload: res.data });
       })
       .catch((err) => console.log(err.message));
     await axios
