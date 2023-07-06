@@ -97,6 +97,9 @@ const reducer = (state, action) => {
         return prod;
       });
       return { ...state, products: prods };
+    case "ADD_BRAND":
+      const newBrands = [...state.brands, action.payload];
+      return { ...state, brands: newBrands };
     default:
       return state;
   }

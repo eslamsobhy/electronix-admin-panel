@@ -138,6 +138,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "LOGOUT" });
   };
 
+  // create brand
+  const createBrand = (brand) => {
+    dispatch({ type: "ADD_BRAND", payload: brand });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -152,6 +157,7 @@ export const AppProvider = ({ children }) => {
         addUser,
         updateProduct,
         addProduct,
+        createBrand,
         login,
         toggleProfilePopup,
         logout,
