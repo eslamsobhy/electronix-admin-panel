@@ -89,6 +89,7 @@ const CategoryForm = () => {
 
               <input
                 {...register("description", {
+                  required: true,
                   minLength: 15,
                 })}
                 aria-invalid={errors.description ? "true" : "false"}
@@ -97,6 +98,11 @@ const CategoryForm = () => {
                 placeholder="description for laptops"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.description?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Descriptoin is required
+                </p>
+              )}
               {errors.description?.type === "minLength" && (
                 <p className="text-red-500" role="alert">
                   Description must be at least 15 chars
