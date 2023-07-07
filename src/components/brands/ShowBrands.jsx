@@ -5,6 +5,7 @@ import Confirm from "../confirmation/Confirm";
 import Loading from "../loading/Loading";
 import NoData from "../no-data/NoData";
 import { useGlobalContext } from "../../../context";
+import PaginatedBrands from "./PaginatedBrands";
 
 const ShowBrands = () => {
   const { brands, loading, confirmDeletion, deleteItem } = useGlobalContext();
@@ -44,7 +45,7 @@ const ShowBrands = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {brands.map(({ _id, brand_name, image }) => (
+                {/* {brands.map(({ _id, brand_name, image }) => (
                   <tr key={_id}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {brand_name}
@@ -67,7 +68,8 @@ const ShowBrands = () => {
                       </button>
                     </td>
                   </tr>
-                ))}
+                ))} */}
+                <PaginatedBrands brands={brands} deleteItem={deleteItem} />
               </tbody>
             </table>
           </div>
