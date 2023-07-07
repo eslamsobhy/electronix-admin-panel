@@ -11,7 +11,7 @@ const AddBrand = () => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
     reset,
   } = useForm();
 
@@ -51,15 +51,26 @@ const AddBrand = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Brand Name
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("brand_name")}
+                {...register("brand_name", {
+                  required: true,
+                })}
+                aria-invalid={errors.brand_name ? "true" : "false"}
                 type="text"
                 id="brandName"
                 placeholder="Apple"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.brand_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Brand name is required
+                </p>
+              )}
             </div>
             <div className="form-group w-[90%] pl-[12px]">
               <label

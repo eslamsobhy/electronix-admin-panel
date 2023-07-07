@@ -96,6 +96,7 @@ const Login = () => {
                 {...register("password", {
                   required: true,
                 })}
+                aria-invalid={errors.password ? "true" : "false"}
                 type="password"
                 id="password"
                 placeholder=""
