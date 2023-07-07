@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -60,6 +60,8 @@ const RepeatedBlock = (props) => {
 };
 
 const UpdateProduct = () => {
+  const navigate = useNavigate();
+
   const [blocks, setBlocks] = useState([]);
 
   // products stored in the global context (coming from db)
@@ -108,7 +110,8 @@ const UpdateProduct = () => {
       formData
     );
 
-    updateProduct(response.data.updatedProduct);
+    updateProduct(response.data.toBeSentDocument);
+    navigate("/products");
     toast.success("Product created successfully!");
   };
 
@@ -145,7 +148,7 @@ const UpdateProduct = () => {
       <article className="w-[80%]">
         <div className="max-w-lg">
           <h3 className="text-amber-700 text-xl font-bold sm:text-2xl">
-            Add new product
+            Update product
           </h3>
         </div>
         <form
@@ -293,13 +296,17 @@ const UpdateProduct = () => {
               Product Details:
             </div>
             <div className="form-group flex flex-wrap gap-3 items-center">
-              {Object.entries(product?.details).map(([key, value], index) => (
-                <RepeatedBlock
-                  key={index}
-                  detailKey={key}
-                  detailValue={value}
-                />
-              ))}
+              {product?.details
+                ? Object.entries(product?.details).map(
+                    ([key, value], index) => (
+                      <RepeatedBlock
+                        key={index}
+                        detailKey={key}
+                        detailValue={value}
+                      />
+                    )
+                  )
+                : []}
               {blocks}
               <button
                 onClick={() => handleRepeat()}

@@ -83,8 +83,7 @@ const AddProduct = () => {
       formData
     );
 
-    console.log(response.data.createdProduct);
-    addProduct(response.data.createdProduct);
+    addProduct(response.data.toBeSentDocument);
     toast.success("Product created successfully!");
     reset();
   };
