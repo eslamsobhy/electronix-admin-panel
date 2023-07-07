@@ -15,7 +15,7 @@ const UpdateCategory = () => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
     setValue,
   } = useForm();
 
@@ -64,15 +64,24 @@ const UpdateCategory = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Category Name
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("category_name")}
+                {...register("category_name", { required: true })}
+                aria-invalid={errors.category_name ? "true" : "false"}
                 type="text"
                 id="catName"
                 placeholder="Laptops"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.category_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Category name is required
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -80,15 +89,32 @@ const UpdateCategory = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Description
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("description")}
+                {...register("description", {
+                  required: true,
+                  minLength: 15,
+                })}
+                aria-invalid={errors.description ? "true" : "false"}
                 type="text"
                 id="description"
                 placeholder="description for laptops"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.description?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Descriptoin is required
+                </p>
+              )}
+              {errors.description?.type === "minLength" && (
+                <p className="text-red-500" role="alert">
+                  Description must be at least 15 chars
+                </p>
+              )}
             </div>
             <div className="form-group w-[90%] pl-[12px]">
               <label
