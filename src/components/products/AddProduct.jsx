@@ -57,7 +57,7 @@ const AddProduct = () => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
     reset,
   } = useForm();
 
@@ -126,16 +126,32 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Name
-                {/* <span className="text-[red]"> *</span> */}
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("name")}
+                {...register("name", {
+                  required: true,
+                  pattern: { value: /^[^0-9].*$/i },
+                })}
+                aria-invalid={errors.name ? "true" : "false"}
                 type="text"
                 id="name"
                 placeholder="iPhone 8"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Product name is required
+                </p>
+              )}
+              {errors.name?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Not valid product name
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -143,15 +159,34 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Stock Count
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("stock_count")}
+                {...register("stock_count", {
+                  required: true,
+                  pattern: {
+                    value: /^[0-9]+$/i,
+                  },
+                })}
+                aria-invalid={errors.stock_count ? "true" : "false"}
                 type="text"
                 id="stock_count"
                 placeholder="Number"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.stock_count?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Count is required
+                </p>
+              )}
+              {errors.stock_count?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Count must be a number
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -159,15 +194,34 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Price
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("price")}
+                {...register("price", {
+                  required: true,
+                  pattern: {
+                    value: /^[1-9][0-9]*$/i,
+                  },
+                })}
+                aria-invalid={errors.price ? "true" : "false"}
                 type="text"
                 id="price"
                 placeholder="123.22 EGP"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.price?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Price is required
+                </p>
+              )}
+              {errors.price?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Price must be a positive number
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -175,10 +229,14 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Brand
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <select
-                {...register("brand_name")}
+                {...register("brand_name", { required: true })}
+                aria-invalid={errors.brand_name ? "true" : "false"}
                 id="brandName"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
@@ -191,6 +249,11 @@ const AddProduct = () => {
                   );
                 })}
               </select>
+              {errors.brand_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Brand name is required
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -198,10 +261,16 @@ const AddProduct = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Category
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <select
-                {...register("category_name")}
+                {...register("category_name", {
+                  required: true,
+                })}
+                aria-invalid={errors.category_name ? "true" : "false"}
                 id="category"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
@@ -214,6 +283,11 @@ const AddProduct = () => {
                   );
                 })}
               </select>
+              {errors.category_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Category name is required
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
