@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 import { navLinks } from "./navData";
 
+import { useGlobalContext } from "../../../context";
+
 const SideNav = ({ isNavOpen }) => {
+  const { loggedInUser } = useGlobalContext();
+
   return (
     <>
       <section
@@ -19,12 +23,16 @@ const SideNav = ({ isNavOpen }) => {
         <div className="user-info flex flex-col justify-center items-center py-[35px]">
           <img
             className={`rounded-[50%] ${isNavOpen ? "w-[4rem]" : "w-[3rem]"}`}
-            src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
-            alt="name"
+            src={
+              loggedInUser?.avatar ||
+              "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
+            }
+            alt={loggedInUser?.first_name || "name"}
           />
           {isNavOpen && (
             <div className="user-name pt-[15px] text-[#616161] font-bold">
-              Eslam Sobhi
+              {loggedInUser?.first_name + " " + loggedInUser?.last_name ||
+                "Eslam Sobhi"}
             </div>
           )}
         </div>

@@ -5,7 +5,7 @@ import { HiMenu } from "react-icons/hi";
 import { useGlobalContext } from "../../../context";
 
 const Navbar = ({ isNavOpen, navHandler }) => {
-  const { toggleProfilePopup } = useGlobalContext();
+  const { toggleProfilePopup, loggedInUser } = useGlobalContext();
 
   return (
     <>
@@ -19,8 +19,11 @@ const Navbar = ({ isNavOpen, navHandler }) => {
         <img
           onClick={() => toggleProfilePopup()}
           className="w-[50px] rounded-[50%] cursor-pointer"
-          src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
-          alt="name"
+          src={
+            loggedInUser?.avatar ||
+            "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.2.1326869177.1680443547&semt=sph"
+          }
+          alt={loggedInUser?.first_name || "name"}
         />
       </nav>
     </>
