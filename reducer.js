@@ -94,7 +94,7 @@ const reducer = (state, action) => {
       const toggle = state.profilePopup;
       return { ...state, profilePopup: !toggle };
     case "LOGOUT":
-      return { ...state, loggedIn: false };
+      return { ...state, loggedIn: false, profilePopup: false };
     case "ADD_PRODUCT":
       const newProds = [...state.products, action.payload];
       return { ...state, products: newProds };
