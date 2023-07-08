@@ -18,7 +18,7 @@ const UpdateUser = () => {
   const {
     register,
     handleSubmit,
-    formState: { error },
+    formState: { errors },
     setValue,
   } = useForm();
 
@@ -69,15 +69,44 @@ const UpdateUser = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 First Name
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("first_name")}
+                {...register("first_name", {
+                  required: true,
+                  minLength: 3,
+                  maxLength: 20,
+                  pattern: { value: /^[^0-9].*$/i },
+                })}
+                aria-invalid={errors.first_name ? "true" : "false"}
                 type="text"
                 id="firstName"
                 placeholder="John"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.first_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  First name is required
+                </p>
+              )}
+              {errors.first_name?.type === "minLength" && (
+                <p className="text-red-500" role="alert">
+                  First name must be at least 3 chars
+                </p>
+              )}
+              {errors.first_name?.type === "maxLength" && (
+                <p className="text-red-500" role="alert">
+                  First name must be less than 20 chars
+                </p>
+              )}
+              {errors.first_name?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Not valid product name
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -85,15 +114,44 @@ const UpdateUser = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Last Name
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("last_name")}
+                {...register("last_name", {
+                  required: true,
+                  minLength: 3,
+                  maxLength: 20,
+                  pattern: { value: /^[^0-9].*$/i },
+                })}
+                aria-invalid={errors.last_name ? "true" : "false"}
                 type="text"
                 id="lastName"
                 placeholder="Doe"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.last_name?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Last name is required
+                </p>
+              )}
+              {errors.last_name?.type === "minLength" && (
+                <p className="text-red-500" role="alert">
+                  Last name must be at least 3 chars
+                </p>
+              )}
+              {errors.last_name?.type === "maxLength" && (
+                <p className="text-red-500" role="alert">
+                  Last name must be less than 20 chars
+                </p>
+              )}
+              {errors.last_name?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Not valid user name
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -101,15 +159,34 @@ const UpdateUser = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Email
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("email")}
+                {...register("email", {
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  },
+                })}
+                aria-invalid={errors.email ? "true" : "false"}
                 type="email"
                 id="email"
                 placeholder="john-doe@gmail.com"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.email?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Email is required
+                </p>
+              )}
+              {errors.email?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Not valid email
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -117,15 +194,32 @@ const UpdateUser = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Phone Number
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
               <input
-                {...register("phone_number")}
+                {...register("phone_number", {
+                  required: true,
+                  pattern: { value: /^\d{11}$/i },
+                })}
+                aria-invalid={errors.phone_number ? "true" : "false"}
                 type="text"
                 id="phone"
                 placeholder="0101706613"
                 className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
+              {errors.phone_number?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Phone number is required
+                </p>
+              )}
+              {errors.phone_number?.type === "pattern" && (
+                <p className="text-red-500" role="alert">
+                  Not valid phone number
+                </p>
+              )}
             </div>
             <div className="form-group">
               <label
@@ -133,15 +227,28 @@ const UpdateUser = () => {
                 className="block text-xs font-medium text-gray-700"
               >
                 Role
+                <span className="text-[red] relative left-1 text-[16px]">
+                  *
+                </span>
               </label>
 
-              <input
-                {...register("role")}
-                type="text"
+              <select
+                {...register("role", { required: true })}
+                aria-invalid={errors.role ? "true" : "false"}
+                defaultValue={user.role}
                 id="role"
-                placeholder="admin"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
-              />
+                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+              >
+                <option value="">Please select</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="superAdmin">Super admin</option>
+              </select>
+              {errors.role?.type === "required" && (
+                <p className="text-red-500" role="alert">
+                  Role is required
+                </p>
+              )}
             </div>
           </article>
           <div className="my-[30px]">

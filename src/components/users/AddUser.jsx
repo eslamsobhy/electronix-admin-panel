@@ -87,7 +87,7 @@ const AddUser = () => {
               )}
               {errors.first_name?.type === "pattern" && (
                 <p className="text-red-500" role="alert">
-                  Not valid product name
+                  Not valid user name
                 </p>
               )}
             </div>
@@ -117,22 +117,22 @@ const AddUser = () => {
               />
               {errors.last_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
-                  First name is required
+                  Last name is required
                 </p>
               )}
               {errors.last_name?.type === "minLength" && (
                 <p className="text-red-500" role="alert">
-                  First name must be at least 3 chars
+                  Last name must be at least 3 chars
                 </p>
               )}
               {errors.last_name?.type === "maxLength" && (
                 <p className="text-red-500" role="alert">
-                  First name must be less than 20 chars
+                  Last name must be less than 20 chars
                 </p>
               )}
               {errors.last_name?.type === "pattern" && (
                 <p className="text-red-500" role="alert">
-                  Not valid product name
+                  Not valid user name
                 </p>
               )}
             </div>
