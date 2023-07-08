@@ -26,7 +26,7 @@ const UpdateUser = () => {
   const onSubmit = async (data) => {
     const { first_name, last_name, role, email, phone_number } = data;
     const response = await axios.patch(
-      `http://localhost:8000/users/${id}`,
+      `http://localhost:8000/users/dashboard/${id}`,
       {
         first_name,
         last_name,
@@ -37,7 +37,7 @@ const UpdateUser = () => {
       { headers: { Authorization: localStorage.getItem("token") } }
     );
 
-    updateUser(response.data);
+    updateUser(response.data.updatedUser);
 
     toast.success("User updated successfully!");
   };
