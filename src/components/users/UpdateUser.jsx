@@ -235,7 +235,7 @@ const UpdateUser = () => {
               <select
                 {...register("role", { required: true })}
                 aria-invalid={errors.role ? "true" : "false"}
-                defaultValue={user.role}
+                defaultValue={user?.role}
                 id="role"
                 className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
