@@ -48,7 +48,7 @@ const CategoryForm = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="form-container mt-[50px] flex flex-col gap-[2rem] justify-center items-center"
         >
-          <article className="inputs flex flex-wrap gap-[4rem]">
+          <article className="inputs w-[100%] flex flex-wrap gap-[4rem]">
             <div className="form-group">
               <label
                 htmlFor="catName"
