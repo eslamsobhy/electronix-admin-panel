@@ -36,7 +36,7 @@ const RepeatedBlock = (props) => {
           type="text"
           id="detail-name"
           placeholder="key name"
-          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+          className="mt-1 rounded-md w-full md:w-[12rem] border-gray-200 shadow-sm sm:text-sm"
         />
       </div>
       <div className="value-container">
@@ -52,7 +52,7 @@ const RepeatedBlock = (props) => {
           type="text"
           id="detail-value"
           placeholder="value"
-          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+          className="mt-1 rounded-md w-full md:w-[12rem] border-gray-200 shadow-sm sm:text-sm"
         />
       </div>
     </div>
@@ -176,7 +176,7 @@ const UpdateProduct = () => {
                 type="text"
                 id="name"
                 placeholder="iPhone 8"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -211,7 +211,7 @@ const UpdateProduct = () => {
                 type="text"
                 id="stock_count"
                 placeholder="Number"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.stock_count?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -246,7 +246,7 @@ const UpdateProduct = () => {
                 type="text"
                 id="price"
                 placeholder="123.22 EGP"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.price?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -275,7 +275,7 @@ const UpdateProduct = () => {
                 type="text"
                 id="new_price"
                 placeholder="123.22 EGP"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.new_price?.type === "pattern" && (
                 <p className="text-red-500" role="alert">
@@ -298,7 +298,7 @@ const UpdateProduct = () => {
                 {...register("brand_name", { required: true })}
                 aria-invalid={errors.brand_name ? "true" : "false"}
                 id="brand_name"
-                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+                className="mt-1 w-full md:w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 {brands.map((brand) => {
@@ -336,7 +336,7 @@ const UpdateProduct = () => {
                 })}
                 aria-invalid={errors.category_name ? "true" : "false"}
                 id="category"
-                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+                className="mt-1 w-full md:w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 {categories.map((category) => {
@@ -370,7 +370,7 @@ const UpdateProduct = () => {
                 multiple
                 type="file"
                 id="images"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
             <div className="w-full h-[1px] bg-[#eee]"></div>

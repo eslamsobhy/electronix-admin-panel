@@ -64,7 +64,7 @@ const AddBrand = () => {
                 type="text"
                 id="brandName"
                 placeholder="Apple"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.brand_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -84,7 +84,7 @@ const AddBrand = () => {
                 {...register("image")}
                 type="file"
                 id="image"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
           </article>

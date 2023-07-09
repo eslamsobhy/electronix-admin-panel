@@ -68,7 +68,7 @@ const CategoryForm = () => {
                 type="text"
                 id="catName"
                 placeholder="Laptops"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.category_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -96,7 +96,7 @@ const CategoryForm = () => {
                 type="text"
                 id="description"
                 placeholder="description for laptops"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.description?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -121,7 +121,7 @@ const CategoryForm = () => {
                 {...register("image")}
                 type="file"
                 id="image"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
           </article>

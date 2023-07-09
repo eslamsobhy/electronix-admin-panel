@@ -68,7 +68,7 @@ const AddUser = () => {
                 type="text"
                 id="firstName"
                 placeholder="John"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.first_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -113,7 +113,7 @@ const AddUser = () => {
                 type="text"
                 id="lastName"
                 placeholder="Doe"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.last_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -158,7 +158,7 @@ const AddUser = () => {
                 type="email"
                 id="email"
                 placeholder="john-doe@gmail.com"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.email?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -192,7 +192,7 @@ const AddUser = () => {
                 type="password"
                 id="password"
                 placeholder="lnkbgwj_$BRElm2e3w"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.password?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -230,7 +230,7 @@ const AddUser = () => {
                 type="text"
                 id="phone"
                 placeholder="0101706613"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.phone_number?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -258,7 +258,7 @@ const AddUser = () => {
                 {...register("role", { required: true })}
                 aria-invalid={errors.role ? "true" : "false"}
                 id="role"
-                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+                className="mt-1 w-full md:w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 <option value="user">User</option>

@@ -68,7 +68,7 @@ function App() {
           className={`main ${
             isNavOpen
               ? "w-[60%] md:w-[80%] ml-[40%] md:ml-[20%]"
-              : "w-[88%] md:w-[93.7%] ml-[13.5%] md:ml-[6.3%]"
+              : "w-[88%] md:w-[93.7%] ml-[12%] md:ml-[6.3%]"
           }`}
         >
           <Navbar isNavOpen={isNavOpen} navHandler={navHandler} />
