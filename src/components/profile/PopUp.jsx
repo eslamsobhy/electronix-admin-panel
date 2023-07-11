@@ -9,7 +9,7 @@ const PopUp = () => {
 
   return (
     <>
-      <section className="flex flex-col justify-evenly px-[10px] absolute top-[5.1rem] right-[1rem] w-[200px] h-[150px] bg-[#f5f5f5] rounded shadow-md shadow-indigo-500/40">
+      <section className="flex flex-col justify-evenly px-[10px] py-1 absolute top-[5.1rem] right-[1rem] w-[200px] gap-3 bg-[#f5f5f5] rounded shadow-md shadow-indigo-500/40">
         <div className="info bg-[#fff] py-[15px] px-[5px] mt-[10px] rounded">
           <div className="text-[#b17a15] text-2xl font-bold rounded">
             {loggedInUser?.first_name + " " + loggedInUser?.last_name}
