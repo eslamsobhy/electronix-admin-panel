@@ -117,6 +117,8 @@ const reducer = (state, action) => {
         return brand;
       });
       return { ...state, brands: brs };
+    case "LOAD_LOGGED_IN_USER":
+      return { ...state, loggedInUser: action.payload };
     default:
       return state;
   }

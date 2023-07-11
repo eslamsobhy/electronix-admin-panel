@@ -153,6 +153,19 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: "ADD_BRAND", payload: brand });
   };
 
+  // get logged-in user data
+  const getLoggedInUser = async () => {
+    const response = await axios.post(
+      "http://localhost:8000/users/dashboard/verify-user",
+      {},
+      { headers: { Authorization: localStorage.getItem("token") } }
+    );
+    dispatch({
+      type: "LOAD_LOGGED_IN_USER",
+      payload: response.data.loggedInUser,
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -165,6 +178,7 @@ export const AppProvider = ({ children }) => {
         createCategory,
         updateUser,
         addUser,
+        getLoggedInUser,
         updateProduct,
         addProduct,
         createBrand,

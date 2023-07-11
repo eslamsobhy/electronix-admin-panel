@@ -28,7 +28,8 @@ import UpdateBrand from "./components/brands/UpdateBrand";
 import { useGlobalContext } from "../context";
 
 function App() {
-  const { loggedIn, fetchData, login, profilePopup } = useGlobalContext();
+  const { loggedIn, fetchData, login, profilePopup, getLoggedInUser } =
+    useGlobalContext();
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -53,8 +54,11 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       fetchData();
+      getLoggedInUser();
     }
   }, [loggedIn]);
+
+  useEffect(() => {}, []);
 
   if (!loggedIn && !localStorage.getItem("token")) {
     return <Login />;
