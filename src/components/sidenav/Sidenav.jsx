@@ -16,8 +16,12 @@ const SideNav = ({ isNavOpen }) => {
           isNavOpen ? "w-[20%]" : "w-[6.2%]"
         }`}
       >
-        <div className="flex justify-center items-center py-[1rem]">
-          <img className="w-[3rem] h-[3rem]" src="vite.svg" alt="" />
+        <div className="flex justify-center items-center py-[1rem] h-[5rem]">
+          <img
+            className={isNavOpen ? "w-[80%] h-[80%]" : "w-[90%] h-[90%]"}
+            src={isNavOpen ? "assets/main-logo.png" : "assets/icon.png"}
+            alt=""
+          />
         </div>
         <div className="splitter h-[1px] w-[100%] bg-[#eee]"></div>
         <div className="user-info flex flex-col justify-center items-center py-[35px]">
