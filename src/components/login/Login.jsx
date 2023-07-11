@@ -42,7 +42,7 @@ const Login = () => {
       <section className="absolute w-full h-full flex justify-center items-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] pr-[30px] rounded"
+          className="flex flex-col md:flex-row gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] md:pr-[30px] pb-[60px] md:pb-0 rounded"
         >
           <img
             src={`assets/login-${Math.floor(Math.random() * 3) + 1}.jpg`}
@@ -75,7 +75,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 placeholder="john-doe@gmail.com"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-[18rem] md:w-[20rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
             {errors.email?.type === "required" && (
@@ -104,7 +104,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 placeholder=""
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-[18rem] md:w-[20rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
             {errors.password?.type === "required" && (

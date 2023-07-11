@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-import SideNav from "./components/sidenav/SideNav";
+import SideNav from "./components/sidenav/Sidenav";
 import Navbar from "./components/nav/Navbar";
 import MainContainer from "./components/main/MainContainer";
 import ShowUsers from "./components/users/ShowUsers";
@@ -70,7 +70,9 @@ function App() {
         <SideNav isNavOpen={isNavOpen} />
         <div
           className={`main ${
-            isNavOpen ? "w-[80%] ml-[20%]" : "w-[93.7%] ml-[6.3%]"
+            isNavOpen
+              ? "w-[60%] md:w-[80%] ml-[40%] md:ml-[20%]"
+              : "w-[88%] md:w-[93.7%] ml-[12%] md:ml-[6.3%]"
           }`}
         >
           <Navbar isNavOpen={isNavOpen} navHandler={navHandler} />

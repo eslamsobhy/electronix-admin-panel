@@ -27,7 +27,7 @@ const RepeatedBlock = () => {
           type="text"
           id="detail-name"
           placeholder="key name"
-          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+          className="mt-1 rounded-md w-full md:w-[12rem] border-gray-200 shadow-sm sm:text-sm"
         />
       </div>
       <div className="value-container">
@@ -43,7 +43,7 @@ const RepeatedBlock = () => {
           type="text"
           id="detail-value"
           placeholder="value"
-          className="mt-1 rounded-md w-[12rem] border-gray-200 shadow-sm sm:text-sm"
+          className="mt-1 rounded-md w-full md:w-[12rem] border-gray-200 shadow-sm sm:text-sm"
         />
       </div>
     </div>
@@ -119,7 +119,7 @@ const AddProduct = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="form-container mt-[50px] flex flex-col gap-[2rem] justify-center items-center"
         >
-          <article className="inputs flex flex-wrap gap-[4rem] justify-between">
+          <article className="inputs w-[100%] flex flex-wrap gap-[4rem] justify-between">
             <div className="form-group">
               <label
                 htmlFor="name"
@@ -140,7 +140,7 @@ const AddProduct = () => {
                 type="text"
                 id="name"
                 placeholder="iPhone 8"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -175,7 +175,7 @@ const AddProduct = () => {
                 type="text"
                 id="stock_count"
                 placeholder="Number"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.stock_count?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -210,7 +210,7 @@ const AddProduct = () => {
                 type="text"
                 id="price"
                 placeholder="123.22 EGP"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.price?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -238,7 +238,7 @@ const AddProduct = () => {
                 {...register("brand_name", { required: true })}
                 aria-invalid={errors.brand_name ? "true" : "false"}
                 id="brandName"
-                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+                className="mt-1 w-full md:w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 {brands.map((brand) => {
@@ -272,7 +272,7 @@ const AddProduct = () => {
                 })}
                 aria-invalid={errors.category_name ? "true" : "false"}
                 id="category"
-                className="mt-1 w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
+                className="mt-1 w-full md:w-[25rem] rounded-md border-gray-200 text-gray-700 sm:text-sm"
               >
                 <option value="">Please select</option>
                 {categories.map((category) => {
@@ -302,7 +302,7 @@ const AddProduct = () => {
                 multiple
                 type="file"
                 id="images"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
             <div className="w-full h-[1px] bg-[#eee]"></div>

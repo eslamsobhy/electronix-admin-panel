@@ -44,7 +44,7 @@ const AddBrand = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="form-container mt-[50px] flex flex-col gap-[2rem] justify-center items-center"
         >
-          <article className="inputs flex flex-wrap gap-[4rem]">
+          <article className="inputs w-[100%] flex flex-wrap gap-[4rem]">
             <div className="form-group">
               <label
                 htmlFor="brandName"
@@ -64,7 +64,7 @@ const AddBrand = () => {
                 type="text"
                 id="brandName"
                 placeholder="Apple"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
               {errors.brand_name?.type === "required" && (
                 <p className="text-red-500" role="alert">
@@ -84,7 +84,7 @@ const AddBrand = () => {
                 {...register("image")}
                 type="file"
                 id="image"
-                className="mt-1 rounded-md w-[25rem] border-gray-200 shadow-sm sm:text-sm"
+                className="mt-1 rounded-md w-full md:w-[25rem] border-gray-200 shadow-sm sm:text-sm"
               />
             </div>
           </article>
