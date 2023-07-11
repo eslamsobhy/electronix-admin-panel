@@ -18,7 +18,7 @@ const SideNav = ({ isNavOpen }) => {
       >
         <div className="flex justify-center items-center py-[1rem] h-[5rem]">
           <img
-            className={isNavOpen ? "w-[80%] h-[80%]" : "w-[90%] h-[90%]"}
+            className={isNavOpen ? "w-[80%] h-[80%]" : "w-[70%] h-[80%]"}
             src={isNavOpen ? "assets/main-logo.png" : "assets/icon.png"}
             alt=""
           />
