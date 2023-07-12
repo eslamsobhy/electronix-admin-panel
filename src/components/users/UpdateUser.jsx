@@ -48,7 +48,7 @@ const UpdateUser = () => {
     setValue("email", user?.email);
     setValue("role", user?.role);
     setValue("phone_number", user?.phone_number);
-  }, []);
+  }, [users]);
 
   return (
     <section className="w-[100%] flex justify-center items-center mt-[30px]">

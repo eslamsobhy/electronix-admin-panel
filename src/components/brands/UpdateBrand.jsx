@@ -41,7 +41,7 @@ const UpdateBrand = () => {
 
   useEffect(() => {
     setValue("brand_name", brand?.brand_name);
-  }, [brand, setValue]);
+  }, [brands]);
 
   return (
     <section className="w-[100%] flex justify-center items-center mt-[30px]">

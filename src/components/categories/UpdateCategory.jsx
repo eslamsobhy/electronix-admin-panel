@@ -43,7 +43,7 @@ const UpdateCategory = () => {
   useEffect(() => {
     setValue("category_name", category?.category_name);
     setValue("description", category?.description);
-  }, [category, setValue]);
+  }, [categories]);
 
   return (
     <section className="w-[100%] flex justify-center items-center mt-[30px]">
