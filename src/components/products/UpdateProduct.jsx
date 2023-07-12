@@ -133,7 +133,7 @@ const UpdateProduct = () => {
     setValue("price", product?.price);
     setValue("new_price", product?.new_price);
     setValue("stock_count", product?.stock_count);
-  }, []);
+  }, [products]);
 
   // add another detail
   const handleRepeat = () => {
