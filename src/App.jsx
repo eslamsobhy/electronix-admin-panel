@@ -24,6 +24,7 @@ import Login from "./components/login/Login";
 import PopUp from "./components/profile/PopUp";
 import AddBrand from "./components/brands/AddBrand";
 import UpdateBrand from "./components/brands/UpdateBrand";
+import Error from "./components/error-page/Error";
 
 import { useGlobalContext } from "../context";
 
@@ -91,6 +92,7 @@ function App() {
             <Route path="/edit-product/:id" element={<UpdateProduct />} />
             <Route path="/add-brand" element={<AddBrand />} />
             <Route path="/edit-brand/:id" element={<UpdateBrand />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </div>
         <ToastContainer />
