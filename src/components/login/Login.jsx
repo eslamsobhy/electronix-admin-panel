@@ -39,11 +39,21 @@ const Login = () => {
 
   return (
     <>
-      <section className="absolute w-full h-full flex justify-center items-center">
+      <section className="absolute w-full h-full flex flex-col justify-center items-center">
+        <img
+          src="/assets/main-logo.png"
+          alt=""
+          className="w-[200px] relative right-[100px] md:right-[280px]"
+        />
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col md:flex-row gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] md:pr-[30px] pb-[60px] md:pb-0 rounded"
+          className="relative flex flex-col md:flex-row gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] md:pr-[30px] pb-[60px] md:pb-0 rounded"
         >
+          <img
+            src="/assets/icon.png"
+            alt=""
+            className="w-[40px] top-3 right-3 absolute"
+          />
           <img
             src={`/assets/login-${Math.floor(Math.random() * 3) + 1}.jpg`}
             alt=""
