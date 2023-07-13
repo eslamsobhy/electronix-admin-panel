@@ -45,7 +45,7 @@ const Login = () => {
           className="flex flex-col md:flex-row gap-[30px] shadow-md shadow-indigo-500/40 bg-[#f5f5f5] md:pr-[30px] pb-[60px] md:pb-0 rounded"
         >
           <img
-            src={`assets/login-${Math.floor(Math.random() * 3) + 1}.jpg`}
+            src={`/assets/login-${Math.floor(Math.random() * 3) + 1}.jpg`}
             alt=""
             className="w-[400px]"
           />
