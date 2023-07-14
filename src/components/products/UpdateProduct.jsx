@@ -12,7 +12,7 @@ const RepeatedBlock = (props) => {
     handleSubmit,
     setValue,
     formState: { error },
-    reset,
+    reset
   } = useForm();
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const UpdateProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setValue
   } = useForm();
 
   // when submitting the form
@@ -88,7 +88,7 @@ const UpdateProduct = () => {
       brand_name,
       category_name,
       images,
-      stock_count,
+      stock_count
     } = data;
 
     const details = gatherDetails();
@@ -106,7 +106,7 @@ const UpdateProduct = () => {
     });
 
     const response = await axios.put(
-      `http://localhost:8000/products/${id}`,
+      `${import.meta.env.VITE_API_URL}/products/${id}`,
       formData
     );
 
@@ -139,7 +139,7 @@ const UpdateProduct = () => {
   const handleRepeat = () => {
     setBlocks((prevBlocks) => [
       ...prevBlocks,
-      <RepeatedBlock key={prevBlocks.length} />,
+      <RepeatedBlock key={prevBlocks.length} />
     ]);
   };
 
@@ -170,7 +170,7 @@ const UpdateProduct = () => {
               <input
                 {...register("name", {
                   required: true,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.name ? "true" : "false"}
                 type="text"
@@ -204,8 +204,8 @@ const UpdateProduct = () => {
                 {...register("stock_count", {
                   required: true,
                   pattern: {
-                    value: /^[0-9]+$/i,
-                  },
+                    value: /^[0-9]+$/i
+                  }
                 })}
                 aria-invalid={errors.stock_count ? "true" : "false"}
                 type="text"
@@ -239,8 +239,8 @@ const UpdateProduct = () => {
                 {...register("price", {
                   required: true,
                   pattern: {
-                    value: /^[1-9][0-9]*$/i,
-                  },
+                    value: /^[1-9][0-9]*$/i
+                  }
                 })}
                 aria-invalid={errors.price ? "true" : "false"}
                 type="text"
@@ -269,7 +269,7 @@ const UpdateProduct = () => {
 
               <input
                 {...register("new_price", {
-                  pattern: { value: /^[0-9]+$/i },
+                  pattern: { value: /^[0-9]+$/i }
                 })}
                 aria-invalid={errors.new_price ? "true" : "false"}
                 type="text"
@@ -332,7 +332,7 @@ const UpdateProduct = () => {
 
               <select
                 {...register("category_name", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.category_name ? "true" : "false"}
                 id="category"

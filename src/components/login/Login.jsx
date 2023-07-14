@@ -16,7 +16,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -24,7 +24,7 @@ const Login = () => {
     const { email, password } = data;
     try {
       const response = await axios.post(
-        "http://localhost:8000/users/dashboard/login",
+        `${import.meta.env.VITE_API_URL}/users/dashboard/login`,
         { email, password }
       );
       login(response.data.user);
@@ -68,8 +68,8 @@ const Login = () => {
                   required: true,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid Email Address",
-                  },
+                    message: "Invalid Email Address"
+                  }
                 })}
                 aria-invalid={errors.email ? "true" : "false"}
                 type="email"
@@ -98,7 +98,7 @@ const Login = () => {
 
               <input
                 {...register("password", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.password ? "true" : "false"}
                 type="password"
