@@ -12,7 +12,7 @@ const CategoryForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -26,7 +26,7 @@ const CategoryForm = () => {
     formData.append("description", description);
 
     const response = await axios.post(
-      "http://localhost:8000/categories",
+      `${import.meta.env.VITE_API_URL}/categories`,
       formData
     );
 
@@ -62,7 +62,7 @@ const CategoryForm = () => {
 
               <input
                 {...register("category_name", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.category_name ? "true" : "false"}
                 type="text"
@@ -90,7 +90,7 @@ const CategoryForm = () => {
               <input
                 {...register("description", {
                   required: true,
-                  minLength: 15,
+                  minLength: 15
                 })}
                 aria-invalid={errors.description ? "true" : "false"}
                 type="text"

@@ -12,7 +12,7 @@ const AddBrand = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -24,7 +24,10 @@ const AddBrand = () => {
       formData.append("image", image[0]);
     }
 
-    const response = await axios.post("http://localhost:8000/brands", formData);
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/brands`,
+      formData
+    );
 
     // console.log(response.data);
     createBrand(response.data.createdBrand);
@@ -58,7 +61,7 @@ const AddBrand = () => {
 
               <input
                 {...register("brand_name", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.brand_name ? "true" : "false"}
                 type="text"

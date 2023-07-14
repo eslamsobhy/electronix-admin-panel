@@ -16,7 +16,7 @@ const UpdateBrand = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setValue
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -31,7 +31,7 @@ const UpdateBrand = () => {
     }
 
     const response = await axios.patch(
-      `http://localhost:8000/brands/${id}`,
+      `${import.meta.env.VITE_API_URL}/brands/${id}`,
       formData
     );
 
@@ -69,7 +69,7 @@ const UpdateBrand = () => {
 
               <input
                 {...register("brand_name", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.brand_name ? "true" : "false"}
                 type="text"

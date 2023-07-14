@@ -16,7 +16,7 @@ const UpdateCategory = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setValue
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -32,7 +32,7 @@ const UpdateCategory = () => {
     formData.append("description", description);
 
     const response = await axios.patch(
-      `http://localhost:8000/categories/${id}`,
+      `${import.meta.env.VITE_API_URL}/categories/${id}`,
       formData
     );
 
@@ -97,7 +97,7 @@ const UpdateCategory = () => {
               <input
                 {...register("description", {
                   required: true,
-                  minLength: 15,
+                  minLength: 15
                 })}
                 aria-invalid={errors.description ? "true" : "false"}
                 type="text"

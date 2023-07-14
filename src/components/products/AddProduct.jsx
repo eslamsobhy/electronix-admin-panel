@@ -10,7 +10,7 @@ const RepeatedBlock = () => {
     register,
     handleSubmit,
     formState: { error },
-    reset,
+    reset
   } = useForm();
   return (
     <div className="key-value-pair w-full flex gap-3">
@@ -58,7 +58,7 @@ const AddProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -79,7 +79,7 @@ const AddProduct = () => {
     });
 
     const response = await axios.post(
-      "http://localhost:8000/products",
+      `${import.meta.env.VITE_API_URL}/products`,
       formData
     );
 
@@ -103,7 +103,7 @@ const AddProduct = () => {
   const handleRepeat = () => {
     setBlocks((prevBlocks) => [
       ...prevBlocks,
-      <RepeatedBlock key={prevBlocks.length} />,
+      <RepeatedBlock key={prevBlocks.length} />
     ]);
   };
 
@@ -134,7 +134,7 @@ const AddProduct = () => {
               <input
                 {...register("name", {
                   required: true,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.name ? "true" : "false"}
                 type="text"
@@ -168,8 +168,8 @@ const AddProduct = () => {
                 {...register("stock_count", {
                   required: true,
                   pattern: {
-                    value: /^[0-9]+$/i,
-                  },
+                    value: /^[0-9]+$/i
+                  }
                 })}
                 aria-invalid={errors.stock_count ? "true" : "false"}
                 type="text"
@@ -203,8 +203,8 @@ const AddProduct = () => {
                 {...register("price", {
                   required: true,
                   pattern: {
-                    value: /^[1-9][0-9]*$/i,
-                  },
+                    value: /^[1-9][0-9]*$/i
+                  }
                 })}
                 aria-invalid={errors.price ? "true" : "false"}
                 type="text"
@@ -268,7 +268,7 @@ const AddProduct = () => {
 
               <select
                 {...register("category_name", {
-                  required: true,
+                  required: true
                 })}
                 aria-invalid={errors.category_name ? "true" : "false"}
                 id="category"

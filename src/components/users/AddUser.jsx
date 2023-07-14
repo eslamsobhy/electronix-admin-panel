@@ -12,20 +12,23 @@ const AddUser = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data) => {
     const { first_name, last_name, phone_number, password, email, role } = data;
 
-    const response = await axios.post("http://localhost:8000/users/signup", {
-      first_name,
-      last_name,
-      phone_number,
-      password,
-      email,
-      role,
-    });
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/users/signup`,
+      {
+        first_name,
+        last_name,
+        phone_number,
+        password,
+        email,
+        role
+      }
+    );
 
     addUser(response.data.newUser);
 
@@ -62,7 +65,7 @@ const AddUser = () => {
                   required: true,
                   minLength: 3,
                   maxLength: 20,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.first_name ? "true" : "false"}
                 type="text"
@@ -107,7 +110,7 @@ const AddUser = () => {
                   required: true,
                   minLength: 3,
                   maxLength: 20,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.last_name ? "true" : "false"}
                 type="text"
@@ -151,8 +154,8 @@ const AddUser = () => {
                 {...register("email", {
                   required: true,
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  },
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                  }
                 })}
                 aria-invalid={errors.email ? "true" : "false"}
                 type="email"
@@ -186,7 +189,7 @@ const AddUser = () => {
                 {...register("password", {
                   required: true,
                   minLength: 6,
-                  maxLength: 20,
+                  maxLength: 20
                 })}
                 aria-invalid={errors.password ? "true" : "false"}
                 type="password"
@@ -224,7 +227,7 @@ const AddUser = () => {
               <input
                 {...register("phone_number", {
                   required: true,
-                  pattern: { value: /^\d{11}$/i },
+                  pattern: { value: /^\d{11}$/i }
                 })}
                 aria-invalid={errors.phone_number ? "true" : "false"}
                 type="text"

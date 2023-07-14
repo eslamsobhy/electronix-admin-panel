@@ -19,20 +19,20 @@ const UpdateUser = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    setValue
   } = useForm();
 
   // when submitting the form
   const onSubmit = async (data) => {
     const { first_name, last_name, role, email, phone_number } = data;
     const response = await axios.patch(
-      `http://localhost:8000/users/dashboard/${id}`,
+      `${import.meta.env.VITE_API_URL}/users/dashboard/${id}`,
       {
         first_name,
         last_name,
         role,
         email,
-        phone_number,
+        phone_number
       },
       { headers: { Authorization: localStorage.getItem("token") } }
     );
@@ -79,7 +79,7 @@ const UpdateUser = () => {
                   required: true,
                   minLength: 3,
                   maxLength: 20,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.first_name ? "true" : "false"}
                 type="text"
@@ -124,7 +124,7 @@ const UpdateUser = () => {
                   required: true,
                   minLength: 3,
                   maxLength: 20,
-                  pattern: { value: /^[^0-9].*$/i },
+                  pattern: { value: /^[^0-9].*$/i }
                 })}
                 aria-invalid={errors.last_name ? "true" : "false"}
                 type="text"
@@ -168,8 +168,8 @@ const UpdateUser = () => {
                 {...register("email", {
                   required: true,
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  },
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                  }
                 })}
                 aria-invalid={errors.email ? "true" : "false"}
                 type="email"
@@ -202,7 +202,7 @@ const UpdateUser = () => {
               <input
                 {...register("phone_number", {
                   required: true,
-                  pattern: { value: /^\d{11}$/i },
+                  pattern: { value: /^\d{11}$/i }
                 })}
                 aria-invalid={errors.phone_number ? "true" : "false"}
                 type="text"
